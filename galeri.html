@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galeri KPU Kabupaten Tebo</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Galeri KPU Kabupaten Tebo - Dokumentasi foto kegiatan, peta, sosialisasi, dan video informasi terkait data pemilih di Kabupaten Tebo.">
+  <meta name="keywords" content="Galeri, Foto Kegiatan, KPU Tebo, Pemilu, Data Pemilih, Video Pemilu">
+  <meta name="author" content="Rendatin KPU Tebo">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Galeri KPU Kabupaten Tebo">
+  <meta property="og:description" content="Lihat dokumentasi foto dan video kegiatan KPU Kabupaten Tebo.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://peta-data-pemilih-tebo.vercel.app/galeri.html">
+  <meta property="og:image" content="https://peta-data-pemilih-tebo.vercel.app/thumbnail.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Lightbox2 CSS (untuk foto) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <!-- VenoBox CSS (untuk video) -->
+  <link href="https://cdn.jsdelivr.net/npm/venobox@2.0.6/dist/venobox.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Verdana', sans-serif;
+      background-color: #f8f9fa;
+    }
+    /* Loading Screen */
+    #loading {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .spinner-border {
+      width: 4rem;
+      height: 4rem;
+    }
+    .gallery-img, .gallery-video {
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .gallery-img:hover, .gallery-video:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+    }
+    .filter-btn {
+      margin: 5px;
+    }
+    footer {
+      background: #212529;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3">Memuat Data...</p>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+        <img src="kpu logo.png" alt="Logo KPU" width="40" height="40" class="me-2">
+        KPU KABUPATEN TEBO
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target="_blank">Data Pemilih Tebo</a></li>
+          <li class="nav-item"><a class="nav-link active" href="galeri.html">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="buletin-datin.html">Buletin Datin</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="bg-dark text-white text-center py-5 mt-5" data-aos="zoom-in">
+    <div class="container">
+      <h1 class="fw-bold">Galeri KPU Kabupaten Tebo</h1>
+      <p class="lead">Dokumentasi foto kegiatan, peta, sosialisasi, dan video informasi</p>
+    </div>
+  </header>
+
+  <!-- Filter -->
+  <div class="container text-center my-4" data-aos="fade-up">
+    <button class="btn btn-outline-dark filter-btn active" data-filter="all">Semua</button>
+    <button class="btn btn-outline-dark filter-btn" data-filter="kegiatan">Kegiatan</button>
+    <button class="btn btn-outline-dark filter-btn" data-filter="peta">Peta</button>
+    <button class="btn btn-outline-dark filter-btn" data-filter="sosialisasi">Sosialisasi</button>
+    <button class="btn btn-outline-dark filter-btn" data-filter="video">Video</button>
+  </div>
+
+  <!-- Galeri -->
+  <main class="container my-5">
+    <div class="row g-4" id="galleryGrid">
+      <!-- Foto Kegiatan -->
+      <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
+        <a href="https://picsum.photos/1200/800?random=10" data-lightbox="galeri" data-title="Kegiatan 1">
+          <img src="https://picsum.photos/600/400?random=10" alt="Kegiatan 1" class="img-fluid gallery-img shadow-sm">
+        </a>
+      </div>
+      <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://picsum.photos/1200/800?random=11" data-lightbox="galeri" data-title="Kegiatan 2">
+          <img src="https://picsum.photos/600/400?random=11" alt="Kegiatan 2" class="img-fluid gallery-img shadow-sm">
+        </a>
+      </div>
+
+      <!-- Foto Peta -->
+      <div class="col-md-4 gallery-item peta" data-aos="fade-up">
+        <a href="https://picsum.photos/1200/800?random=12" data-lightbox="galeri" data-title="Peta Pemilih 1">
+          <img src="https://picsum.photos/600/400?random=12" alt="Peta Pemilih 1" class="img-fluid gallery-img shadow-sm">
+        </a>
+      </div>
+
+      <!-- Foto Sosialisasi -->
+      <div class="col-md-4 gallery-item sosialisasi" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://picsum.photos/1200/800?random=13" data-lightbox="galeri" data-title="Sosialisasi Pemilu">
+          <img src="https://picsum.photos/600/400?random=13" alt="Sosialisasi" class="img-fluid gallery-img shadow-sm">
+        </a>
+      </div>
+
+      <!-- Video -->
+      <div class="col-md-4 gallery-item video" data-aos="fade-up">
+        <a class="venobox gallery-video" data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=ysz5S6PUM-U">
+          <img src="https://img.youtube.com/vi/ysz5S6PUM-U/hqdefault.jpg" alt="Video Sosialisasi 1" class="img-fluid shadow-sm gallery-video">
+        </a>
+      </div>
+      <div class="col-md-4 gallery-item video" data-aos="fade-up" data-aos-delay="200">
+        <a class="venobox gallery-video" data-autoplay="true" data-vbtype="video" href="sample-video.mp4">
+          <img src="https://picsum.photos/600/400?random=14" alt="Video Sosialisasi 2" class="img-fluid shadow-sm gallery-video">
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer data-aos="zoom-in">
+    <p>&copy; 2025 Peta Data Pemilih Tebo | Dibuat oleh Rendatin KPU Tebo</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Lightbox2 JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <!-- VenoBox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/venobox@2.0.6/dist/venobox.min.js"></script>
+
+  <!-- Custom Script -->
+  <script>
+    window.addEventListener("load", function() {
+      document.getElementById("loading").style.display = "none";
+      AOS.init({ duration: 1200, once: true });
+      new VenoBox({ selector: '.venobox' });
+    });
+
+    // Filter
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.getAttribute("data-filter");
+        galleryItems.forEach(item => {
+          if (filter === "all" || item.classList.contains(filter)) {
+            item.classList.remove("hidden");
+          } else {
+            item.classList.add("hidden");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
