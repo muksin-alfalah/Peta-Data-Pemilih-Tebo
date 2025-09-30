@@ -3,227 +3,210 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PETA DATA PEMILIH KABUPATEN TEBO</title>
-  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/4/46/KPU_Logo.svg">
+  <title>Peta Data Pemilih Tebo</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Website modern, peta, dan mudah digunakan. Dibuat dengan Bootstrap 5 dan SEO friendly.">
-  <meta name="keywords" content="Tebo, Peta, petadatapemilihtebo, Data, SEO, Pemilih, Indonesia">
-  <meta name="author" content="Rendatin Team">
+  <!-- SEO Meta -->
+  <meta name="description" content="Peta Data Pemilih Kabupaten Tebo - Menyajikan informasi data pemilih per kecamatan dalam bentuk peta interaktif untuk transparansi dan kemudahan akses masyarakat.">
+  <meta name="keywords" content="Peta Pemilih, Data Pemilih, Kabupaten Tebo, KPU Tebo, Peta Interaktif, Pemilu">
+  <meta name="author" content="Rendatin KPU Tebo">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Peta Data Pemilih Tebo">
-  <meta property="og:description" content="Peta, PDPB, dan mudah digunakan. Dibuat dengan Bootstrap 5 dan SEO friendly.">
-  <meta property="og:image" content="https://example.com/images/preview.jpg">
-  <meta property="og:url" content="https://peta-data-pemilih-tebo.vercel.app/">
+  <meta property="og:title" content="Peta Data Pemilih Kabupaten Tebo">
+  <meta property="og:description" content="Website ini menampilkan Peta Data Pemilih Kabupaten Tebo secara interaktif, lengkap dengan data pemilih per kecamatan.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://peta-data-pemilih-tebo.vercel.app/">
+  <meta property="og:image" content="https://peta-data-pemilih-tebo.vercel.app/thumbnail.jpg">
 
-  <!-- Schema JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Peta Data Pemilih Tebo",
-    "url": "https://peta-data-pemilih-tebo.vercel.app/",
-    "logo": "https://peta-data-pemilih-tebo.vercel.app//images/logo.png"
-  }
-  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
-    body { font-family: 'Verdana', sans-serif; transition: background 0.3s, color 0.3s; }
-    .dark-mode { background-color: #121212; color: #e0e0e0; }
-
-  /* Navbar gelap di dark mode */
-    .dark-navbar {
-    background-color: #1e1e1e !important;
+    body {
+      font-family: 'Verdana', sans-serif;
+      background-color: #f8f9fa;
     }
-    .dark-navbar .nav-link {
-      color: #ffffff !important;
-    }
-    .dark-navbar .navbar-brand {
-      color: #ffffff !important;
-    }
-
-      .navbar-brand img {
-        height: 60px;   /* ubah angka ini sesuai selera */
-        width: auto;    /* otomatis menjaga proporsi */
-        margin-right: 10px;
-    }
-
-    .carousel-item { height: 100vh; min-height: 400px; background-size: cover; background-position: center; }
-    .carousel-caption { bottom: 200px; }
-    .carousel-caption h1 { font-size: 3rem; font-weight: bold; }
-    .carousel-caption p { font-size: 1.2rem; }
-
-    .dark-toggle { position: fixed; top: 15px; right: 20px; z-index: 1100; }
-
-    .feature-card { transition: transform 0.3s, box-shadow 0.3s; }
-    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-    .btn:hover { transform: scale(1.05); transition: 0.3s; }
-
-    .parallax {
-      background-image: url('https://picsum.photos/1600/900?random=4');
-      min-height: 400px;
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-    }
-
+    /* Loading Screen */
     #loading {
       position: fixed;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       background: #fff;
-      display: flex; justify-content: center; align-items: center;
-      z-index: 2000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
-    .spinner-border { width: 3rem; height: 3rem; }
+    .spinner-border {
+      width: 4rem;
+      height: 4rem;
+    }
+    .carousel-item {
+      height: 100vh;
+      min-height: 500px;
+      background: no-repeat center center scroll;
+      background-size: cover;
+      position: relative;
+    }
+    .carousel-caption {
+      bottom: 35%;
+      animation: fadeInUp 2s ease-in-out;
+    }
+    .carousel-caption h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      animation: zoomIn 1.5s ease;
+    }
+    .carousel-caption p {
+      font-size: 1.25rem;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+      animation: fadeIn 2s ease;
+    }
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    footer {
+      background: #212529;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    /* Keyframes Animasi */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-3">Memuat Data...</p>
+  </div>
 
-<div id="loading">
-  <div class="spinner-border text-primary" role="status"></div>
-</div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">PDPB Tebo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Data PDPB</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Buletin Datin</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<button class="btn btn-outline-light dark-toggle" onclick="toggleDarkMode()">🌙</button>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="mainNavbar">
-  <div class="container">
-    <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/KPU_Logo.svg" alt="Logo">
-      PETA DATA PEMILIH KABUPATEN TEBO
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav" aria-controls="navbarNav" 
-            aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <!-- Carousel Hero -->
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url('https://picsum.photos/1920/1080?random=1');">
+        <div class="carousel-caption text-center">
+          <h1 data-aos="zoom-in">Selamat Datang</h1>
+          <p data-aos="fade-up" data-aos-delay="300">di Peta Data Pemilih Kabupaten Tebo</p>
+          <button id="btnInfo" class="btn btn-light mt-3" data-aos="flip-up" data-aos-delay="600">Lihat Info</button>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=2');"></div>
+      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=3');"></div>
+      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=4');"></div>
+      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=5');"></div>
+    </div>
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/78e0432e-066d-4b9b-a1b2-2481eeee9e8d" target="_blank">Data PDPB</a></li>
-        <li class="nav-item"><a class="nav-link" href="#features">Galeri</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">Buletin Datin</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Tentang</a></li>
-      </ul>
-    </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
-</nav>
 
-<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="background-image: url('https://picsum.photos/1600/900?random=1');">
-      <div class="carousel-caption text-start animate__animated animate__fadeInDown">
-        <h1>Selamat Datang di Website Peta Data Pemilih Kabupaten Tebo</h1>
-        <p>Jika Ingin Melihat Data PDPB silahkan Klik Tombol di bawah ini</p>
-        <a href="https://lookerstudio.google.com/reporting/78e0432e-066d-4b9b-a1b2-2481eeee9e8d" class="btn btn-light btn-lg">Jelajahi</a>
+  <!-- Konten -->
+  <main class="container my-5">
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h2>Tentang Website</h2>
+        <p>
+          Website ini menampilkan informasi data pemilih Kabupaten Tebo dalam bentuk peta interaktif. 
+          Tujuannya untuk memberikan transparansi dan kemudahan akses bagi masyarakat.
+        </p>
+        <ul>
+          <li>Data Pemilih Per Kecamatan</li>
+          <li>Peta Interaktif</li>
+          <li>Informasi Statistik</li>
+        </ul>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div id="map" class="shadow-sm border"></div>
       </div>
     </div>
-    <div class="carousel-item" style="background-image: url('https://picsum.photos/1600/900?random=2');">
-      <div class="carousel-caption text-end animate__animated animate__fadeInRight">
-        <h1>Komisioner 1</h1>
-        <p>Mendukung kebutuhan bisnis dan personal Anda</p>
-      </div>
-    </div>
-    <div class="carousel-item" style="background-image: url('https://picsum.photos/1600/900?random=2');">
-      <div class="carousel-caption text-end animate__animated animate__fadeInRight">
-        <h1>Komisioner 2</h1>
-        <p>Mendukung kebutuhan bisnis dan personal Anda</p>
-      </div>
-    </div>
-    <div class="carousel-item" style="background-image: url('https://picsum.photos/1600/900?random=4');">
-      <div class="carousel-caption text-end animate__animated animate__fadeInRight">
-        <h1>Komisioner 3</h1>
-        <p>Mendukung kebutuhan bisnis dan personal Anda</p>
-      </div>
-    </div>
-    <div class="carousel-item" style="background-image: url('https://picsum.photos/1600/900?random=5');">
-      <div class="carousel-caption text-end animate__animated animate__fadeInRight">
-        <h1>Komisioner 4</h1>
-        <p>Mendukung kebutuhan bisnis dan personal Anda</p>
-      </div>
-    </div>
-    <div class="carousel-item" style="background-image: url('https://picsum.photos/1600/900?random=6');">
-      <div class="carousel-caption text-end animate__animated animate__fadeInRight">
-        <h1>Komisioner 5</h1>
-        <p>Mendukung kebutuhan bisnis dan personal Anda</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
-    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6"></button>
-  </div>
-</div>
+  </main>
 
-<section id="features" class="py-5 text-center">
-  <div class="container">
-    <h2 class="mb-4 animate__animated animate__fadeIn">Fitur Utama</h2>
-    <div class="row g-4">
-      <div class="col-md-4 feature-card animate__animated animate__fadeInUp"><div class="fs-1 text-primary">⚡</div><h5>Cepat</h5><p>Website dibuat ringan sehingga mudah diakses.</p></div>
-      <div class="col-md-4 feature-card animate__animated animate__fadeInUp"><div class="fs-1 text-primary">📱</div><h5>Responsif</h5><p>Dapat dibuka di perangkat apapun dengan tampilan rapi.</p></div>
-      <div class="col-md-4 feature-card animate__animated animate__fadeInUp"><div class="fs-1 text-primary">🎨</div><h5>Modern</h5><p>Desain menarik dengan Bootstrap terbaru.</p></div>
-    </div>
-  </div>
-</section>
+  <!-- Footer -->
+  <footer data-aos="zoom-in">
+    <p>&copy; 2025 Peta Data Pemilih Tebo | Dibuat oleh Rendatin KPU Tebo</p>
+  </footer>
 
-<footer class="bg-primary text-white text-center py-3">
-  <p class="mb-0">© 2025 Rendatin KPU Tebo. Semua Hak Dilindungi.</p>
-</footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Leaflet JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Script -->
+  <script>
+    // Hilangkan loading screen setelah halaman selesai dimuat
+    window.addEventListener("load", function() {
+      document.getElementById("loading").style.display = "none";
+      AOS.init({ duration: 1200, once: true });
+    });
 
-<script>
-  function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const btn = document.querySelector('.dark-toggle');
-    const navbar = document.getElementById('mainNavbar');
+    // Event button
+    document.getElementById("btnInfo").addEventListener("click", () => {
+      alert("Website ini menampilkan Peta Data Pemilih Kabupaten Tebo secara interaktif.");
+    });
 
-    if (document.body.classList.contains('dark-mode')) {
-      btn.textContent = '☀️';
-      navbar.classList.add('dark-navbar');
-      navbar.classList.remove('bg-primary');
-    } else {
-      btn.textContent = '🌙';
-      navbar.classList.remove('dark-navbar');
-      navbar.classList.add('bg-primary');
-    }
-  }
+    // Map
+    var map = L.map('map').setView([-1.259, 102.346], 9); // Koordinat Tebo, Jambi
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
 
-  window.addEventListener("load", function(){
-    document.getElementById("loading").style.display = "none";
-  });
-</script>
-
+    // Marker contoh
+    L.marker([-1.259, 102.346]).addTo(map)
+      .bindPopup("<b>Kabupaten Tebo</b><br>Data Pemilih 2025.")
+      .openPopup();
+  </script>
 </body>
 </html>
