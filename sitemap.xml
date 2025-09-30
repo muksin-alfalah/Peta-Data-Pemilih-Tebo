@@ -2,22 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://peta-data-pemilih-tebo.vercel.app/</loc>
-    <lastmod>2025-09-26</lastmod>
-    <priority>1.0</priority>
+    <lastmod>2025-09-30</lastmod>
+    <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://peta-data-pemilih-tebo.vercel.app/tentang</loc>
-    <lastmod>2025-09-26</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://peta-data-pemilih-tebo.vercel.app/buletin</loc>
-    <lastmod>2025-09-26</lastmod>
-    <priority>0.7</priority>
+    <loc>https://peta-data-pemilih-tebo.vercel.app/data-pdpb</loc>
+    <lastmod>2025-09-30</lastmod>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://peta-data-pemilih-tebo.vercel.app/galeri</loc>
-    <lastmod>2025-09-26</lastmod>
-    <priority>0.6</priority>
+    <lastmod>2025-09-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://peta-data-pemilih-tebo.vercel.app/buletin-datin</loc>
+    <lastmod>2025-09-30</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://peta-data-pemilih-tebo.vercel.app/tentang</loc>
+    <lastmod>2025-09-30</lastmod>
+    <priority>0.64</priority>
   </url>
 </urlset>
