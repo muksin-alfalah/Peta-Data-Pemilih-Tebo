@@ -54,16 +54,15 @@
     }
     .gallery-img, .gallery-video {
       width: 100%;
-      height: 250px;          /* seragam */
-      object-fit: cover;      /* menjaga proporsi */
+      height: 250px;
+      object-fit: cover;
       border-radius: 10px;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
     }
-.gallery-img:hover, .gallery-video:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
-}
+    .gallery-img:hover, .gallery-video:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
     }
     .filter-btn {
       margin: 5px;
@@ -77,6 +76,15 @@
     }
     .hidden {
       display: none !important;
+    }
+    /* Pagination */
+    .pagination {
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .page-item.disabled .page-link {
+      pointer-events: none;
+      opacity: 0.5;
     }
   </style>
 </head>
@@ -127,62 +135,32 @@
 
   <!-- Galeri -->
   <main class="container my-5">
-  <div class="row g-4" id="galleryGrid">
-    <!-- Foto Kegiatan -->
-    <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
-      <a href="foto1.jpg" data-lightbox="galeri" data-title="Kegiatan 1">
-        <img src="foto 1.jpeg" alt="Kegiatan 1" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
-      <a href="foto2.jpg" data-lightbox="galeri" data-title="Kegiatan 2">
-        <img src="foto 2.jpeg" alt="Kegiatan 2" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
-      <a href="foto3.jpg" data-lightbox="galeri" data-title="Kegiatan 3">
-        <img src="foto 5.jpeg" alt="Kegiatan 3" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    <!-- Tambahkan item lain seperti biasa -->
-  </div>
-    <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
-      <a href="foto3.jpg" data-lightbox="galeri" data-title="Kegiatan 3">
-        <img src="foto 7.jpeg" alt="Kegiatan 3" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
-      <a href="foto3.jpg" data-lightbox="galeri" data-title="Kegiatan 3">
-        <img src="foto 14.jpeg" alt="Kegiatan 3" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    <div class="col-md-4 gallery-item kegiatan" data-aos="fade-up">
-      <a href="foto3.jpg" data-lightbox="galeri" data-title="Kegiatan 3">
-        <img src="foto 17.jpeg" alt="Kegiatan 3" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    <!-- sosialisasi -->
-    <div class="col-md-4 gallery-item sosialisasi" data-aos="fade-up">
-      <a href="foto3.jpg" data-lightbox="galeri" data-title="Kegiatan 3">
-        <img src="foto 17.jpeg" alt="Kegiatan 3" class="img-fluid gallery-img shadow-sm">
-      </a>
-    </div>
-    
-    <!-- video -->
-    <div class="col-md-4 gallery-item video" data-aos="fade-up">
-      <a class="venobox" data-autoplay="true" data-vbtype="video" href="video.mp4">
-        <img src="foto 28.png" alt="Video 1" class="gallery-video shadow-sm">
-      </a>
+    <div class="row g-4" id="galleryGrid">
+      <!-- Foto Kegiatan (8 item) -->
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto1.jpg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto 1.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto2.jpg" data-lightbox="galeri" data-title="Kegiatan 2"><img src="foto 2.jpeg" alt="Kegiatan 2" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto3.jpg" data-lightbox="galeri" data-title="Kegiatan 3"><img src="foto 4.jpeg" alt="Kegiatan 3" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto4.jpg" data-lightbox="galeri" data-title="Kegiatan 4"><img src="foto 5.jpeg" alt="Kegiatan 4" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto5.jpg" data-lightbox="galeri" data-title="Kegiatan 5"><img src="foto 8.jpeg" alt="Kegiatan 5" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto6.jpg" data-lightbox="galeri" data-title="Kegiatan 6"><img src="foto 13.jpeg" alt="Kegiatan 6" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto7.jpg" data-lightbox="galeri" data-title="Kegiatan 7"><img src="foto 20.jpeg" alt="Kegiatan 7" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item kegiatan"><a href="foto8.jpg" data-lightbox="galeri" data-title="Kegiatan 8"><img src="foto 22.jpeg" alt="Kegiatan 8" class="gallery-img shadow-sm"></a></div>
+
+      <!-- Foto Sosialisasi (3 item) -->
+      <div class="col-md-4 gallery-item sosialisasi"><a href="foto9.jpg" data-lightbox="galeri" data-title="Sosialisasi 1"><img src="foto 3.jpeg" alt="Sosialisasi 1" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item sosialisasi"><a href="foto10.jpg" data-lightbox="galeri" data-title="Sosialisasi 2"><img src="foto 6.jpeg" alt="Sosialisasi 2" class="gallery-img shadow-sm"></a></div>
+      <div class="col-md-4 gallery-item sosialisasi"><a href="foto11.jpg" data-lightbox="galeri" data-title="Sosialisasi 3"><img src="foto 9.jpeg" alt="Sosialisasi 3" class="gallery-img shadow-sm"></a></div>
+
+      <!-- Video lokal -->
+      <div class="col-md-4 gallery-item video"><a class="venobox" data-autoplay="true" data-vbtype="video" href="video.mp4"><img src="foto 28.png" alt="Video 1" class="gallery-img"></a></div>
     </div>
 
-  <!-- Pagination -->
-  <nav aria-label="Page navigation" class="mt-4">
-    <ul class="pagination justify-content-center" id="pagination">
-      <!-- tombol pagination di-generate lewat JS -->
-    </ul>
-  </nav>
-</main>
-  
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination" id="pagination"></ul>
+    </nav>
+  </main>
+
   <!-- Footer -->
   <footer data-aos="zoom-in">
     <p>&copy; 2025 Peta Data Pemilih Tebo | Dibuat oleh Rendatin KPU Tebo</p>
@@ -199,42 +177,6 @@
 
   <!-- Custom Script -->
   <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const itemsPerPage = 6; // jumlah item per halaman
-    const items = document.querySelectorAll("#galleryGrid .gallery-item");
-    const totalPages = Math.ceil(items.length / itemsPerPage);
-    const pagination = document.getElementById("pagination");
-
-    function showPage(page) {
-      // sembunyikan semua item
-      items.forEach((item, index) => {
-        item.style.display = "none";
-        if (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) {
-          item.style.display = "block";
-        }
-      });
-
-      // update pagination aktif
-      document.querySelectorAll("#pagination li").forEach(li => li.classList.remove("active"));
-      document.querySelector(`#pagination li[data-page='${page}']`)?.classList.add("active");
-    }
-
-    // generate tombol pagination
-    for (let i = 1; i <= totalPages; i++) {
-      const li = document.createElement("li");
-      li.classList.add("page-item");
-      li.setAttribute("data-page", i);
-      li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-      li.addEventListener("click", (e) => {
-        e.preventDefault();
-        showPage(i);
-      });
-      pagination.appendChild(li);
-    }
-
-    // tampilkan halaman pertama
-    showPage(1);
-  });
     window.addEventListener("load", function() {
       document.getElementById("loading").style.display = "none";
       AOS.init({ duration: 1200, once: true });
@@ -258,8 +200,45 @@
             item.classList.add("hidden");
           }
         });
+        currentPage = 1;
+        showPage(currentPage);
       });
     });
+
+    // Pagination
+    const itemsPerPage = 6;
+    let currentPage = 1;
+
+    function showPage(page) {
+      const visibleItems = [...galleryItems].filter(item => !item.classList.contains("hidden"));
+      const totalPages = Math.ceil(visibleItems.length / itemsPerPage);
+
+      visibleItems.forEach((item, index) => {
+        item.style.display = (index >= (page-1)*itemsPerPage && index < page*itemsPerPage) ? "block" : "none";
+      });
+
+      // Render pagination
+      const pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      for (let i = 1; i <= totalPages; i++) {
+        pagination.innerHTML += `
+          <li class="page-item ${i === page ? 'active' : ''}">
+            <a class="page-link" href="#">${i}</a>
+          </li>
+        `;
+      }
+
+      document.querySelectorAll("#pagination .page-link").forEach((link, idx) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          currentPage = idx+1;
+          showPage(currentPage);
+        });
+      });
+    }
+
+    showPage(currentPage);
   </script>
 </body>
 </html>
