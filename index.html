@@ -205,25 +205,23 @@
 
     // Counter Global
 async function updateVisitorCount() {
+  const url = 'https://counterapi.dev/api/peta-data-pemilih-tebo/global-visitors?increment';
+
   try {
-    const res = await fetch('/api/visitor');
+    const res = await fetch(url);
     const data = await res.json();
 
-    // Debug dulu (supaya tahu bentuk datanya)
-    console.log('Response CountAPI:', data);
+    console.log('Response CounterAPI:', data);
 
-    // Jika CountAPI sukses
-    if (data && typeof data.value === 'number') {
-      document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
-    } else {
-      document.getElementById('visitorCount').innerText = '0';
-    }
-
+    // Gunakan field "count" dari hasil JSON
+    const count = data.count ?? 0;
+    document.getElementById('visitorCount').innerText = count.toLocaleString('id-ID');
   } catch (error) {
     console.error('Gagal memuat:', error);
     document.getElementById('visitorCount').innerText = 'Gagal memuat data';
   }
 }
+
 updateVisitorCount();
 
   </script>
