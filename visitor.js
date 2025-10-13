@@ -1,17 +1,16 @@
+// File: /api/visitor.js
 export default async function handler(req, res) {
-  const fs = await import("fs");
-  const filePath = "/tmp/visitor-count.json";
-
-  let count = 0;
   try {
-    const data = fs.readFileSync(filePath, "utf-8");
-    count = JSON.parse(data).count || 0;
-  } catch {
-    count = 0;
-  }
+    // Ambil data dari CountAPI
+    const response = await fetch('https://api.countapi.xyz/update/peta-data-pemilih-tebo/global-visitors/?amount=1');
+    const data = await response.json();
 
-  count++;
-  fs.writeFileSync(filePath, JSON.stringify({ count }));
-  res.setHeader("Cache-Control", "no-store");
-  res.status(200).json({ count });
+    // Izinkan akses dari semua domain (optional)
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Kirim hasil ke frontend
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Gagal mengambil data pengunjung' });
+  }
 }
