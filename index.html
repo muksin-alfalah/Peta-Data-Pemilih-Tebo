@@ -208,7 +208,17 @@ async function updateVisitorCount() {
   try {
     const res = await fetch('/api/visitor');
     const data = await res.json();
-    document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
+
+    // Debug dulu (supaya tahu bentuk datanya)
+    console.log('Response CountAPI:', data);
+
+    // Jika CountAPI sukses
+    if (data && typeof data.value === 'number') {
+      document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
+    } else {
+      document.getElementById('visitorCount').innerText = '0';
+    }
+
   } catch (error) {
     console.error('Gagal memuat:', error);
     document.getElementById('visitorCount').innerText = 'Gagal memuat data';
