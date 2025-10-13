@@ -1,38 +1,22 @@
 export default async function handler(req, res) {
   const namespace = 'peta-data-pemilih-tebo';
   const key = 'global-visitors';
-  const url = `https://api.countapi.xyz/update/${namespace}/${key}/?amount=1`;
+  const countapiUrl = `https://api.countapi.xyz/update/${namespace}/${key}/?amount=1`;
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(countapiUrl)}`;
 
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (compatible; VercelEdge/1.0)',
-      },
-    });
+    const response = await fetch(proxyUrl);
+    const data = await response.json();
 
-    // pastikan respons benar-benar JSON
-    const text = await response.text();
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch (err) {
-      console.error('Gagal parsing JSON:', text);
-      throw new Error('Respons bukan JSON');
-    }
+    if (!data.contents) throw new Error('Respons kosong dari proxy');
 
-    console.log('Data CountAPI:', data);
+    // parse isi JSON sebenarnya
+    const parsed = JSON.parse(data.contents);
 
-    if (data && data.value !== undefined) {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.status(200).json({ count: data.value });
-    } else {
-      throw new Error('Data tidak valid');
-    }
-
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.status(200).json({ count: parsed.value });
   } catch (error) {
-    console.error('Error server visitor.js:', error.message);
+    console.error('Error di visitor.js:', error.message);
     res.status(500).json({ error: 'Gagal mengambil data pengunjung' });
   }
 }
