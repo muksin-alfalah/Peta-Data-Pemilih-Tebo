@@ -205,18 +205,20 @@
 
     // Counter Global
     async function updateVisitorCount() {
-      const namespace = 'peta-data-pemilih-tebo';
-      const key = 'global-visitors';
-      const url = `https://api.countapi.xyz/hit/${namespace}/${key}`;
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
-      } catch (error) {
-        document.getElementById('visitorCount').innerText = 'Gagal memuat';
-      }
-    }
-    updateVisitorCount();
+  // gunakan proxy gratis allorigins agar lolos CORS
+  const apiURL = 'https://api.allorigins.win/get?url=' +
+    encodeURIComponent('https://api.countapi.xyz/update/peta-data-pemilih-tebo/global-visitors/?amount=1');
+  try {
+    const res = await fetch(apiURL);
+    const json = await res.json();
+    const data = JSON.parse(json.contents);
+    document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
+  } catch (error) {
+    console.error(error);
+    document.getElementById('visitorCount').innerText = 'Gagal memuat';
+  }
+}
+updateVisitorCount();
   </script>
 </body>
 </html>
