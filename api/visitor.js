@@ -2,25 +2,20 @@ export default async function handler(req, res) {
   const namespace = 'peta-data-pemilih-tebo';
   const key = 'global-visitors';
   const countapiUrl = `https://api.countapi.xyz/update/${namespace}/${key}/?amount=1`;
-  const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(countapiUrl)}`;
 
   try {
-    const response = await fetch(proxyUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PetaDataPemilihTebo/1.0)' },
-    });
-    const text = await response.text();
+    // Fetch langsung dari server (bukan browser) — tidak kena CORS
+    const response = await fetch(countapiUrl);
+    const data = await response.json();
 
-    let parsed;
-    try {
-      parsed = JSON.parse(text);
-    } catch {
-      throw new Error('Respons bukan JSON valid');
+    // Pastikan hasil valid
+    if (!data.value && !data.count) {
+      throw new Error('Data kosong atau tidak valid');
     }
 
-    if (!parsed.value && !parsed.count) throw new Error('Data kosong');
-
+    // Izinkan semua origin agar bisa diakses di browser
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.status(200).json({ count: parsed.value || parsed.count });
+    res.status(200).json({ count: data.value || data.count });
   } catch (error) {
     console.error('Error di visitor.js:', error.message);
     res.status(500).json({ error: 'Gagal mengambil data pengunjung' });
