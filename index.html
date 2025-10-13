@@ -205,19 +205,16 @@
 
     // Counter Global
 async function updateVisitorCount() {
-  const namespace = 'peta-data-pemilih-tebo';
-  const key = 'global-visitors';
-  const url = `https://api.counterapi.dev/${namespace}/${key}?increment=true`;
+  const apiUrl = 'https://api.counterapi.dev/peta-data-pemilih-tebo/global-visitors?increment=true';
+  const proxyUrl = `https://api.allorigins.hexlet.app/get?url=${encodeURIComponent(apiUrl)}`;
 
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
-
+    const res = await fetch(proxyUrl);
     const data = await res.json();
-    console.log('Response CounterAPI.dev:', data);
+    const parsed = JSON.parse(data.contents); // ambil isi JSON dari hasil proxy
 
-    const count = data.count ?? 0;
-    document.getElementById('visitorCount').innerText = count.toLocaleString('id-ID');
+    console.log('Response CounterAPI:', parsed);
+    document.getElementById('visitorCount').innerText = parsed.count.toLocaleString('id-ID');
   } catch (error) {
     console.error('Gagal memuat:', error);
     document.getElementById('visitorCount').innerText = 'Gagal memuat data';
