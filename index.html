@@ -205,15 +205,15 @@
 
     // Counter Global
 async function updateVisitorCount() {
-  const url = 'https://counterapi.dev/api/peta-data-pemilih-tebo/global-visitors?increment';
+  const url = 'https://counterapi.dev/api/v1/peta-data-pemilih-tebo/global-visitors/increment';
 
   try {
     const res = await fetch(url);
-    const data = await res.json();
+    if (!res.ok) throw new Error('HTTP error: ' + res.status);
 
+    const data = await res.json();
     console.log('Response CounterAPI:', data);
 
-    // Gunakan field "count" dari hasil JSON
     const count = data.count ?? 0;
     document.getElementById('visitorCount').innerText = count.toLocaleString('id-ID');
   } catch (error) {
