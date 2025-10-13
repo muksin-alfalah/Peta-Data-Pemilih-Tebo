@@ -90,7 +90,7 @@
       height: auto;
     }
 
-    /* Keyframes Animasi */
+    /* Animasi */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
@@ -116,19 +116,19 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-      <img src="kpu logo.png" alt="Logo KPU" width="40" height="40" class="me-2">
-      DATA PEMILIH KPU KABUPATEN TEBO
-    </a>
+        <img src="kpu logo.png" alt="Logo KPU" width="40" height="40" class="me-2">
+        DATA PEMILIH KPU KABUPATEN TEBO
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target=”_blank” >Data Pemilih Tebo</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target="_blank">Data Pemilih Tebo</a></li>
           <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
           <li class="nav-item"><a class="nav-link" href="buletin-datin.html">Buletin Datin</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://cekdptonline.kpu.go.id" target=”_blank”>Cek DPT Online</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://cekdptonline.kpu.go.id" target="_blank">Cek DPT Online</a></li>
           <li class="nav-item"><a class="nav-link" href="tentang-rendatin.html">Tentang</a></li>
         </ul>
       </div>
@@ -143,12 +143,8 @@
           <h1 data-aos="zoom-in">Selamat Datang</h1>
           <p data-aos="fade-up" data-aos-delay="300">di PETA DATA PEMILIH KABUPATEN TEBO</p>
         </div>
-      </div> <!-- 
-      <div class="carousel-item" style="background-image: url('lapas.jpeg');"></div>
-      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=3');"></div>
-      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=4');"></div>
-      <div class="carousel-item" style="background-image: url('https://picsum.photos/1920/1080?random=5');"></div>
-    </div> -->
+      </div>
+    </div>
     <!-- Controls -->
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -172,13 +168,18 @@
           <li>Peta Interaktif</li>
           <li>Informasi Statistik</li>
         </ul>
-        <button id="btnInfo" class="btn btn-primary"></button>
+        <button id="btnInfo" class="btn btn-primary">Informasi Website</button>
       </div>
       <div class="col-lg-6" data-aos="fade-left">
         <div id="map" class="shadow-sm border"></div>
       </div>
     </div>
   </main>
+
+  <!-- Counter Pengunjung -->
+  <div class="text-center mb-4" data-aos="zoom-in">
+    <p>Jumlah Pengunjung: <span id="visitorCount" class="text-primary">Memuat...</span></p>
+  </div>
 
   <!-- Footer -->
   <footer data-aos="zoom-in">
@@ -217,6 +218,19 @@
     L.marker([-1.259, 102.346]).addTo(map)
       .bindPopup("<b>Kabupaten Tebo</b><br>Data Pemilih 2025.")
       .openPopup();
+
+    // Counter Pengunjung
+    async function updateVisitorCount() {
+      const apiURL = 'https://api.countapi.xyz/hit/peta-data-pemilih-tebo.vercel.app/visits';
+      try {
+        const res = await fetch(apiURL);
+        const data = await res.json();
+        document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
+      } catch (error) {
+        document.getElementById('visitorCount').innerText = 'Gagal memuat';
+      }
+    }
+    updateVisitorCount();
   </script>
 </body>
 </html>
