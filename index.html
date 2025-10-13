@@ -206,7 +206,7 @@
     // Counter Global
     async function updateVisitorCount() {
   // gunakan proxy gratis allorigins agar lolos CORS
-  const apiURL = 'https://api.allorigins.win/get?url=' +
+  const apiURL = 'https://api.allorigins.hexlet.app/get?url=' +
     encodeURIComponent('https://api.countapi.xyz/update/peta-data-pemilih-tebo/global-visitors/?amount=1');
   try {
     const res = await fetch(apiURL);
