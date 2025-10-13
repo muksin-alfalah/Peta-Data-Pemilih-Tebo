@@ -206,7 +206,7 @@
     // Counter Global
 async function updateVisitorCount() {
   try {
-    const res = await fetch('/visitor');
+    const res = await fetch('/api/visitor');
     const data = await res.json();
     document.getElementById('visitorCount').innerText = data.value.toLocaleString('id-ID');
   } catch (error) {
