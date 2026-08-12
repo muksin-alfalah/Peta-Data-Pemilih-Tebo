@@ -3,214 +3,751 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Tentang Rendatin KPU Kabupaten Tebo</title>
 
-  <!-- SEO Meta -->
-  <meta name="description" content="Tentang Rendatin KPU Kabupaten Tebo - Tim Data dan Informasi KPU Kabupaten Tebo.">
+  <meta name="description" content="Tentang Rendatin KPU Kabupaten Tebo - Tim Perencanaan, Data dan Informasi KPU Kabupaten Tebo.">
   <meta name="keywords" content="KPU Tebo, Rendatin, Data dan Informasi, Pemilu">
   <meta name="author" content="Rendatin KPU Tebo">
+  <meta name="robots" content="index, follow">
 
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary: #b51d2a;
+      --primary-dark: #7f101b;
+      --primary-soft: #fcecee;
+      --navy: #101828;
+      --text: #344054;
+      --muted: #667085;
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --border: #eaecf0;
+      --shadow: 0 18px 50px rgba(16, 24, 40, .10);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Verdana', sans-serif;
-      background-color: #f8f9fa;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #fff;
     }
-    header {
-      background: #212529;
-      color: white;
-      padding: 60px 0;
+
+    /* NAVBAR */
+    .navbar {
+      background: rgba(16, 24, 40, .88) !important;
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      padding: 12px 0;
+      transition: .25s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(16, 24, 40, .97) !important;
+      box-shadow: 0 8px 30px rgba(0,0,0,.14);
+    }
+
+    .navbar-brand {
+      font-size: .92rem;
+      letter-spacing: .2px;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 11px;
+      padding: 3px;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,.78) !important;
+      font-size: .86rem;
+      font-weight: 600;
+      padding: 9px 12px !important;
+      margin-left: 4px;
+      border-radius: 9px;
+      transition: .2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff !important;
+      background: rgba(255,255,255,.10);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(110deg, rgba(16,24,40,.96) 0%, rgba(16,24,40,.84) 52%, rgba(127,16,27,.58) 100%),
+        url('kantor_baru.jpeg') center/cover;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      right: -180px;
+      top: -100px;
+      border-radius: 50%;
+      background: rgba(181,29,42,.28);
+      filter: blur(5px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 120px;
+      background: linear-gradient(transparent, rgba(16,24,40,.32));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 85px;
+      padding-bottom: 65px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ffb4bb;
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.03;
+      font-weight: 800;
+      letter-spacing: -2.5px;
+      max-width: 900px;
+      margin: 22px 0 18px;
+    }
+
+    .hero h1 em {
+      color: #ffb4bb;
+      font-style: normal;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: rgba(255,255,255,.76);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* SECTION */
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-soft {
+      background: var(--soft);
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-size: .73rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.65rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 750px;
+    }
+
+    /* INTRO */
+    .intro-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 10px 35px rgba(16,24,40,.05);
+      height: 100%;
+    }
+
+    .intro-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .intro-card h3 {
+      color: var(--navy);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .intro-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* PEOPLE */
+    .person-card {
+      position: relative;
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px 22px;
       text-align: center;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    .member-card {
-      transition: transform 0.3s, box-shadow 0.3s;
-      border-radius: 10px;
+
+    .person-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 4px;
+      background: var(--primary);
+      opacity: .85;
     }
-    .member-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      color: #800000;
+
+    .person-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+      border-color: #f0c9cd;
     }
+
+    .avatar {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 800;
+      box-shadow: 0 12px 28px rgba(181,29,42,.22);
+    }
+
+    .person-card h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .person-role {
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .role-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    /* LEADER */
+    .leader-card {
+      background: linear-gradient(135deg, #101828, #202c42);
+      border-radius: 26px;
+      padding: 34px;
+      color: #fff;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .leader-card::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      right: -100px;
+      top: -110px;
+      border-radius: 50%;
+      background: rgba(181,29,42,.35);
+    }
+
+    .leader-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .leader-card .avatar {
+      width: 96px;
+      height: 96px;
+      margin: 0 0 18px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: none;
+    }
+
+    .leader-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .leader-card p {
+      color: rgba(255,255,255,.66);
+      margin: 0;
+    }
+
+    /* DIVIDER */
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-heading .section-text {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* FOOTER */
     footer {
-      background: #212529;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      margin-top: 30px;
+      background: #0b1220;
+      color: rgba(255,255,255,.62);
+      padding: 48px 0 24px;
+    }
+
+    footer h5 {
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      font-size: .84rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .footer-line {
+      border-top: 1px solid rgba(255,255,255,.09);
+      margin-top: 28px;
+      padding-top: 20px;
+    }
+
+    /* BACK TO TOP */
+    #backTop {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 13px;
+      background: var(--primary);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 28px rgba(181,29,42,.28);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: .25s ease;
+      z-index: 1000;
+    }
+
+    #backTop.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 991px) {
+      .hero { min-height: 68vh; }
+      .section { padding: 75px 0; }
+    }
+
+    @media (max-width: 575px) {
+      .hero-content {
+        padding-top: 105px;
+        padding-bottom: 55px;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+        letter-spacing: -1.5px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .intro-card,
+      .leader-card {
+        padding: 26px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-        <img src="kpu logo.png" alt="Logo KPU" width="40" height="40" class="me-2">
-        KPU KABUPATEN TEBO
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5">Data Pemilih Tebo</a></li>
-          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
-          <li class="nav-item"><a class="nav-link active" href="buletin-datin.html">Buletin Datin</a></li>
-          <li class="nav-item"><a class="nav-link" href="tentang-rendatin.html">Tentang</a></li>
-        </ul>
-      </div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <img src="kpu logo.png" class="me-2" alt="Logo KPU">
+      <span>KPU KABUPATEN TEBO</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Buka navigasi">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target="_blank" rel="noopener">
+            Data Pemilih Tebo
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="galeri.html">Galeri</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="buletin-datin.html">Buletin Datin</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="tentang-rendatin.html">Tentang</a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Hero Banner -->
-  <header class="mt-5">
-    <div class="container">
-      <h1 class="fw-bold">Tentang Rendatin KPU Kabupaten Tebo</h1>
-      <p class="lead">Tim Perencanaan, Data dan Informasi KPU Kabupaten Tebo</p>
-    </div>
-  </header>
-
-  <!-- Pengarah Utama KPU -->
-  <section class="container my-5">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Struktur Pengarah KPU Kabupaten Tebo</h2>
-      <p>Susunan pengarah terdiri dari Ketua, Anggota KPU Kabupaten Tebo, serta Penanggung Jawab dari Sekretariat.</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-content">
+    <div class="eyebrow">
+      <span></span>
+      Rendatin KPU Kabupaten Tebo
     </div>
 
-    <!-- Ketua & Anggota KPU -->
-    <div class="row mb-5 justify-content-center text-center">
-      <!-- Ketua KPU sejajar dengan anggota -->
+    <h1>
+      Mengenal <em>Rendatin</em><br>
+      KPU Kabupaten Tebo
+    </h1>
 
-      <!-- Anggota 1 -->
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota KPU 1">
-          <div class="card-body text-center">
-            <h5 class="card-title">Elan Reinwardt Amerlon</h5>
-            <p class="card-text">Anggota KPU Kabupaten Tebo</p>
-          </div>
+    <p>
+      Tim Perencanaan, Data dan Informasi KPU Kabupaten Tebo yang berperan
+      dalam mendukung pengelolaan, penyajian, dan penyampaian informasi
+      secara terstruktur, akurat, dan informatif.
+    </p>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-kicker">Tentang Kami</div>
+      <h2 class="section-title">Perencanaan, Data dan Informasi</h2>
+      <p class="section-text">
+        Kami adalah Tim Rendatin (Perencanaan, Data dan Informasi) KPU Kabupaten
+        Tebo yang bertugas mengelola dan menyajikan data serta informasi pemilu
+        dengan transparan dan akurat.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="intro-card">
+          <div class="intro-icon">01</div>
+          <h3>Perencanaan</h3>
+          <p>
+            Mendukung proses perencanaan yang berkaitan dengan data,
+            informasi, dan kebutuhan penyelenggaraan kegiatan KPU.
+          </p>
         </div>
       </div>
 
-      <!-- Anggota 2 -->
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota KPU 2">
-          <div class="card-body text-center">
-            <h5 class="card-title">Heri Satriawan</h5>
-            <p class="card-text">Anggota KPU Kabupaten Tebo</p>
-          </div>
+      <div class="col-lg-4">
+        <div class="intro-card">
+          <div class="intro-icon">02</div>
+          <h3>Data</h3>
+          <p>
+            Mengelola dan menyajikan data agar dapat digunakan secara
+            terstruktur, akurat, dan mudah dipahami.
+          </p>
         </div>
       </div>
 
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota KPU 2">
-          <div class="card-body text-center">
-            <h5 class="card-title">Atiul Fuadiyah</h5>
-            <p class="card-text">Ketua KPU Kabupaten Tebo</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Anggota 3 -->
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota KPU 3">
-          <div class="card-body text-center">
-            <h5 class="card-title">Supriadi</h5>
-            <p class="card-text">Anggota KPU Kabupaten Tebo</p>
-          </div>
+      <div class="col-lg-4">
+        <div class="intro-card">
+          <div class="intro-icon">03</div>
+          <h3>Informasi</h3>
+          <p>
+            Mendukung penyampaian informasi kepemiluan agar lebih mudah
+            diakses dan dipahami oleh masyarakat.
+          </p>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Penanggung Jawab Sekretaris -->
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Sekretaris">
-          <div class="card-body text-center">
-            <h5 class="card-title">Nukman</h5>
-            <p class="card-text">Sekretaris</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Perkenalan Tim Rendatin -->
-  <section class="container my-5">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Tim Perencanaan, Data dan Informasi KPU Kabupaten Tebo</h2>
-      <p>Kami adalah Tim Rendatin (Perencanaan, Data dan Informasi) KPU Kabupaten Tebo yang bertugas mengelola dan menyajikan data serta informasi pemilu dengan transparan dan akurat.</p>
+<!-- PENGARAH UTAMA -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-kicker">Struktur Pengarah</div>
+      <h2 class="section-title">KPU Kabupaten Tebo</h2>
+      <p class="section-text">
+        Susunan pengarah terdiri dari Ketua, Anggota KPU Kabupaten Tebo,
+        serta Penanggung Jawab dari Sekretariat.
+      </p>
     </div>
 
-    <!-- Ketua & Kasubbag -->
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Ketua">
-          <div class="card-body text-center">
-            <h5 class="card-title">Ahmad Junaidi</h5>
-            <p class="card-text">Ketua Tim Rendatin</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Kasubbag">
-          <div class="card-body text-center">
-            <h5 class="card-title">Robiah</h5>
-            <p class="card-text">Kasubbag Rendatin</p>
+    <!-- Ketua -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-5 col-lg-3">
+        <div class="leader-card">
+          <div class="leader-content">
+            <div class="avatar">AF</div>
+            <h3>Atiul Fuadiyah</h3>
+            <p>Ketua KPU Kabupaten Tebo</p>
+            <span class="role-badge">Ketua</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Anggota -->
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota 1">
-          <div class="card-body text-center">
-            <h5 class="card-title">Meli Yunita</h5>
-            <p class="card-text">Staff Rendatin</p>
-          </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">EA</div>
+          <h3>Elan Reinwardt Amerlon</h3>
+          <p class="person-role">Anggota KPU Kabupaten Tebo</p>
+          <span class="role-badge">Anggota</span>
         </div>
       </div>
 
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota 2">
-          <div class="card-body text-center">
-            <h5 class="card-title">Eko Purwadi</h5>
-            <p class="card-text">Staff Rendatin</p>
-          </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">HS</div>
+          <h3>Heri Satriawan</h3>
+          <p class="person-role">Anggota KPU Kabupaten Tebo</p>
+          <span class="role-badge">Anggota</span>
         </div>
       </div>
 
-      <div class="col-md-3">
-        <div class="card member-card shadow-sm">
-          <img src="https://cdn-icons-png.flaticon.com/64/747/747376.png" class="card-img-top" alt="Anggota 3">
-          <div class="card-body text-center">
-            <h5 class="card-title">Muksin Alfalah</h5>
-            <p class="card-text">Staff Rendatin</p>
-          </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">SP</div>
+          <h3>Supriadi</h3>
+          <p class="person-role">Anggota KPU Kabupaten Tebo</p>
+          <span class="role-badge">Anggota</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Rendatin KPU Kabupaten Tebo</p>
-  </footer>
+    <!-- Sekretaris -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">N</div>
+          <h3>Nukman</h3>
+          <p class="person-role">Sekretaris</p>
+          <span class="role-badge">Sekretariat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script src="https://cdn-icons-png.flaticon.com/64/747/747376.png"></script>
+<!-- TIM RENDATIN -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <div class="section-kicker">Tim Rendatin</div>
+      <h2 class="section-title">Perencanaan, Data dan Informasi</h2>
+      <p class="section-text">
+        Struktur Tim Rendatin KPU Kabupaten Tebo dalam mendukung pengelolaan
+        data dan informasi.
+      </p>
+    </div>
+
+    <!-- Ketua & Kasubbag -->
+    <div class="row g-4 justify-content-center mb-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">AJ</div>
+          <h3>Ahmad Junaidi</h3>
+          <p class="person-role">Ketua Tim Rendatin</p>
+          <span class="role-badge">Ketua Tim</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">R</div>
+          <h3>Robiah</h3>
+          <p class="person-role">Kasubbag Rendatin</p>
+          <span class="role-badge">Kasubbag</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Staff -->
+    <div class="row g-4 justify-content-center">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">MY</div>
+          <h3>Meli Yunita</h3>
+          <p class="person-role">Staff Rendatin</p>
+          <span class="role-badge">Staff</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">EP</div>
+          <h3>Eko Purwadi</h3>
+          <p class="person-role">Staff Rendatin</p>
+          <span class="role-badge">Staff</span>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="person-card">
+          <div class="avatar">MA</div>
+          <h3>Muksin Alfalah</h3>
+          <p class="person-role">Staff Rendatin</p>
+          <span class="role-badge">Staff</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <h5>Rendatin KPU Kabupaten Tebo</h5>
+        <p>
+          Perencanaan, Data dan Informasi KPU Kabupaten Tebo.
+          Portal ini dikembangkan untuk mendukung penyajian informasi
+          yang lebih mudah, transparan, dan informatif.
+        </p>
+      </div>
+
+      <div class="col-lg-5">
+        <h5>KPU Kabupaten Tebo</h5>
+        <p>
+          Informasi data dan kegiatan kepemiluan Kabupaten Tebo.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-line d-flex flex-column flex-md-row justify-content-between gap-2">
+      <small>&copy; 2026 Rendatin KPU Kabupaten Tebo</small>
+      <small>Perencanaan, Data dan Informasi</small>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backTop" aria-label="Kembali ke atas">↑</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  const backTop = document.getElementById('backTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+      backTop.classList.add('show');
+    } else {
+      nav.classList.remove('scrolled');
+      backTop.classList.remove('show');
+    }
+  });
+
+  backTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
 </body>
 </html>
