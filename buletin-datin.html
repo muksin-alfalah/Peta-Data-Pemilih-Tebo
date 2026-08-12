@@ -3,322 +3,2020 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Buletin Datin - Peta Data Pemilih Tebo</title>
+
+  <title>Buletin Datin | KPU Kabupaten Tebo</title>
+
+  <meta name="description"
+        content="Buletin Datin KPU Kabupaten Tebo menyajikan berita, kegiatan, data, informasi dan dokumentasi terkait Perencanaan, Data dan Informasi.">
+
+  <meta name="keywords"
+        content="Buletin Datin, KPU Tebo, KPU Kabupaten Tebo, Data Pemilih, PDPB, Pemilu">
+
+  <meta name="author" content="Rendatin KPU Kabupaten Tebo">
+  <meta name="robots" content="index, follow">
+
   <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
   <style>
-    body { font-family: 'Verdana', sans-serif; background-color: #f7faf8; }
-    .news-card { transition: transform .2s, box-shadow .2s; }
-    .news-card:hover { transform: translateY(-5px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
-    footer { background: #212529; color: white; padding: 15px; text-align: center; margin-top: 30px; }
-    .pagination { justify-content: center; margin-top: 30px; }
-  </style>
-</head>
-<body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <img src="kpu logo.png" alt="Logo KPU" width="40" height="40" class="me-2">
-      <a class="navbar-brand fw-bold" href="peta-data-pemilih-tebo.html">DATA PEMILIH KABUPATEN TEBO</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5">Data Pemilih Tebo</a></li>
-          <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
-          <li class="nav-item"><a class="nav-link active" href="buletin-datin.html">Buletin Datin</a></li>
-          <li class="nav-item"><a class="nav-link" href="tentang-rendatin.html">Tentang</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    :root {
+      --primary: #b51d2a;
+      --primary-dark: #8f1420;
+      --primary-soft: #fcecee;
 
-  <!-- Header -->
-  <header class="bg-primary bg-dark text-white text-center py-5 mt-5">
-    <div class="container">
-      <h1>Buletin Datin</h1>
-      <p class="lead">Kumpulan berita & informasi terbaru seputar Data Pemilih Kabupaten Tebo</p>
-    </div>
-  </header>
+      --navy: #101828;
+      --text: #344054;
+      --muted: #667085;
 
-  <!-- Konten Berita -->
-  <main class="container my-5">
-    <div class="row g-4" id="news-container">
-      <!-- Semua berita (nanti diatur dengan JS pagination) -->
+      --surface: #ffffff;
+      --soft: #f7f8fa;
+      --border: #eaecf0;
 
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="berita/foto/mou.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo dan Universitas Islam Tebo Jalin Kerja Sama Strategis</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo resmi menjalin kerja sama dengan Universitas Islam Tebo melalui</p>
-            <a href="berita/mou.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="berita/foto/pemilih-baru-tebo.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">Pemilih Baru di Kabupaten Tebo Terbanyak di Provinsi Jambi Semester I Tahun 2026</h5>
-            <p class="card-text">Kabupaten Tebo mencatatkan jumlah pemilih baru terbanyak di Provinsi Jambi berdasarkan hasil Rekapitulasi Pemutakhiran Data Pemilih Berkelanjutan atau PDPB Semester I Tahun 2026.</p>
-            <a href="berita/semestersatu.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="berita/foto/plenotw220262.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Laksanakan Rekapitulasi Pemutakhiran Data Pemilih Berkelanjutan (PDPB) Triwulan II Tahun 2026</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo telah melaksanakan Rapat Pleno Rekapitulasi Pemutakhiran Data Pemilih Berkelanjutan (PDPB) Triwulan II Tahun 2026 sebagai bagian dari pelaksanaan pemutakhiran data pemilih secara berkelanjutan sesuai dengan ketentuan peraturan perundang-undangan.</p>
-            <a href="berita/pdpbtw22026.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="berita/foto/zoompdpb2.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Ikuti Rapat Koordinasi Persiapan Rekapitulasi PDPB Triwulan II Tahun 2026</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo mengikuti rapat koordinasi secara daring melalui aplikasi Zoom dalam rangka persiapan Rekapitulasi Pemutakhiran Data Pemilih Berkelanjutan (PDPB) Triwulan II Tahun 2026.</p>
-            <a href="berita/persiapanpdpb.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="dukcapil.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU Tebo Koordinasi dengan Dukcapil Terkait Pembaruan Data Kependudukan</h5>
-            <p class="card-text">Dalam rangka menjaga akurasi dan kualitas Data Pemilih Berkelanjutan (DPB), Komisi Pemilihan Umum Kabupaten Tebo melaksanakan</p>
-            <a href="berita/dukcapil.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="coktaslagi.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">Komisi Pemilihan Umum (KPU) Kabupaten Tebo melaksanakan kegiatan Coklit Terbatas</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo melaksanakan kegiatan Pencocokan dan Penelitian Terbatas (Coktas) dalam rangka Pemutakhiran Data Pemilih Berkelanjutan (PDPB) Triwulan II Tahun 2026. Kegiatan ini dilakukan sebagai upaya untuk menjaga kualitas data pemilih agar tetap akurat, mutakhir, dan sesuai dengan kondisi faktual di lapangan.</p>
-            <a href="coktaslagi.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="pdpbtwI.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">Rapat Pleno Terbuka Rekapitulasi PDPB Triwulan I Tahun 2026 di Muara Tebo Berjalan Lancar</h5>
-            <p class="card-text">Kamis, 02 April 2026, Komisi Pemilihan Umum (KPU) Kabupaten Tebo menggelar Rapat Pleno Terbuka Rekapitulasi Pemutakhiran Data Pemilih Berkelanjutan (PDPB) Triwulan I Tahun 2026 di Muara Tebo.</p>
-            <a href="pdpbtwI.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="bawaslu-tebo2.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Lakukan Kunjungan Koordinasi ke Bawaslu Kabupaten Tebo</h5>
-            <p class="card-text">Senin, 09 Maret 2026, Dalam rangka memperkuat sinergi antar lembaga penyelenggara pemilu, Komisi Pemilihan Umum (KPU) Kabupaten Tebo melakukan kunjungan koordinasi ke Badan Pengawas Pemilihan Umum (Bawaslu) Kabupaten Tebo.</p>
-            <a href="korbawaslu.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="lapas-tebo2.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Koordinasi Dengan Lapas Kelas IIb Muara Tebo</h5>
-            <p class="card-text">Selasa, 03 Maret 2026, Dalam rangka meningkatkan kualitas pelayanan serta memperkuat sinergi antar lembaga, KPU melaksanakan kegiatan koordinasi bersama Lapas Tebo dengan mengusung semangat membangun.</p>
-            <a href="budaya.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="alur.png" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">Alur Pemutakhiran Data Pemilih Berkelanjutan Kegiatan KPU diluar Tahapan Pemilu</h5>
-            <p class="card-text">Dalam rangka menjaga akurasi dan kemutakhiran data pemilih, Komisi Pemilihan Umum Republik Indonesia (KPU RI) secara berkelanjutan melaksanakan Pemutakhiran Data Pemilih Berkelanjutan (PDPB).</p>
-            <a href="alurpdpb.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="bawaslu.jpeg" class="card-img-top" alt="Berita 1">
-          <div class="card-body">
-            <h5 class="card-title">KPU TEBO Koordinasi Dengan Bawaslu</h5>
-            <p class="card-text">Kamis, 25 September 2025, KPU Kabupaten Tebo berkunjung ke Bawaslu Kabupaten Tebo dalam rangka koordinasi persiapan Pleno PDPB Triwulan III.</p>
-            <a href="berita-detail-kpu-bawaslu.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="lapas.jpeg" class="card-img-top" alt="Berita 2">
-          <div class="card-body">
-            <h5 class="card-title">KPU TEBO Kordinasi dan Silaturahmi ke Lapas Tebo</h5>
-            <p class="card-text">Kamis, 28 Agustus 2025, KPU Kabupaten Tebo, Ahmad Junaidi Divisi Data bersama staf berkunjung ke Lapas Kabupaten Tebo dalam rangka koordinasi dan silaturahmi.</p>
-            <a href="berita-kpu-lapas-tebo.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="kodim.jpeg" class="card-img-top" alt="Berita 3">
-          <div class="card-body">
-            <h5 class="card-title">KPU TEBO KORDINASI KE KODIM 0416 BUTE TERKAIT DATA TNI </h5>
-            <p class="card-text">22 September 2025, Komisi Pemilihan Umum Kabupaten Tebo melaksanakan silahturahmi dan kordinasi.</p>
-            <a href="berita-kodim.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tambah berita lain sesuai kebutuhan -->
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="coktas.jpeg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Melaksanakan Coklit Terbatas (COKTAS) data pemilih yang diturunkan oleh KPU RI.</h5>
-            <p class="card-text">Komisi Pemilihan Umum Kabupaten tebo  langsung tancap gas untuk melaksanakan Pemutakhiran Data Pemilih Berkelanjutan (PDBP)paska tahapan pemilu yang telah dilaksanakan.</p>
-            <a href="berita-coktas.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="plenosatu.jpg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Gelar Rapat Pleno Rekapitulasi Daftar Pemilih Berkelanjutan Triwulan III Tahun 2025.</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo melaksanakan Rapat Pleno Terbuka Rekapitulasi Daftar Pemilih Berkelanjutan (PDPB) Triwulan III Tahun 2025, bertempat di Aula Kantor KPU Kabupaten Tebo, Kamis (02/10/2025).</p>
-            <a href="beritadua.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="launching.jpg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">KPU Tebo Luncurkan Website Peta Data Pemilih Kabupaten Tebo</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo resmi meluncurkan Website Peta Data Pemilih Kabupaten Tebo, sebagai inovasi digital dalam penyajian informasi kepemiluan dan transparansi data pemilih kepada masyarakat.</p>
-            <a href="launching.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div> 
-<!--
-    <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="webinar.jpeg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Ikuti Webinar Penerapan E-Government Berbasis Big Data di Lingkungan KPU</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo mengikuti Webinar Penerapan E-Government Berbasis Big Data di Lingkungan KPU.</p>
-            <a href="berita1.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
--->
-    <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="fkp.jpeg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Melaksanakan Rapat Koordinasi Forum Konsultasi Publik (FKP) untuk Meningkatkan Kepuasan Terhadap Layanan Masyarakat</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo terus berkomitmen untuk meningkatkan kualitas pelayanan publik sebagai wujud nyata pelaksanaan prinsip.</p>
-            <a href="fkp.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="pleno tw.jpeg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">Bawaslu Soroti Pemilih Pemula pada Pleno Terbuka PDPB Triwulan IV KPU Kabupaten Tebo</h5>
-            <p class="card-text">TEBO — Badan Pengawas Pemilihan Umum (Bawaslu) Kabupaten Tebo memberikan perhatian khusus terhadap pendataan pemilih pemula pada Rapat Pleno Terbuka Pemutakhiran Data Pemilih Berkelanjutan (PDPB) Triwulan IV Tahun 2025 yang digelar KPU Kabupaten Tebo.</p>
-            <a href="pdpbtwempat.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4 news-item">
-        <div class="card news-card h-100">
-          <img src="laporanpdpb.jpg" class="card-img-top" alt="Berita 4">
-          <div class="card-body">
-            <h5 class="card-title">KPU Kabupaten Tebo Serahkan Laporan PDPB Tahun 2025 ke KPU Provinsi Jambi</h5>
-            <p class="card-text">Komisi Pemilihan Umum (KPU) Kabupaten Tebo telah melaksanakan penyerahan</p>
-            <a href="laporan.html" class="btn btn-primary">Baca Selengkapnya</a>
-          </div>
-        </div>
-      </div>
-
-    <!-- Pagination -->
-    <nav>
-      <ul class="pagination">
-        <li class="page-item"><button class="page-link" id="prevBtn">Sebelumnya</button></li>
-        <li class="page-item"><button class="page-link" id="nextBtn">Berikutnya</button></li>
-      </ul>
-    </nav>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Peta Data Pemilih Tebo | Dibuat oleh Rendatin KPU Tebo</p>
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Pagination Script -->
-  <script>
-    const itemsPerPage = 3;
-    let currentPage = 1;
-    const newsItems = document.querySelectorAll(".news-item");
-    const totalPages = Math.ceil(newsItems.length / itemsPerPage);
-
-    function showPage(page) {
-      newsItems.forEach((item, index) => {
-        item.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) ? "block" : "none";
-      });
-
-      // tombol disable jika di page pertama / terakhir
-      document.getElementById("prevBtn").disabled = page === 1;
-      document.getElementById("nextBtn").disabled = page === totalPages;
+      --shadow:
+        0 18px 50px rgba(16, 24, 40, .09);
     }
 
-    document.getElementById("prevBtn").addEventListener("click", () => {
-      if (currentPage > 1) {
-        currentPage--;
-        showPage(currentPage);
-      }
-    });
+    * {
+      box-sizing: border-box;
+    }
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        showPage(currentPage);
-      }
-    });
+    html {
+      scroll-behavior: smooth;
+    }
 
-    // tampilkan halaman pertama saat load
-    showPage(currentPage);
-  </script>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      background: #fff;
+
+      transition: opacity .4s ease;
+    }
+
+    #loading .spinner-border {
+      width: 2.6rem;
+      height: 2.6rem;
+      color: var(--primary);
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      background: rgba(16, 24, 40, .94) !important;
+
+      backdrop-filter: blur(16px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+      padding: 11px 0;
+
+      transition: .25s ease;
+    }
+
+    .navbar-brand {
+      font-size: .92rem;
+      letter-spacing: .2px;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+
+      object-fit: contain;
+
+      background: #fff;
+      border-radius: 10px;
+
+      padding: 3px;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,.78) !important;
+
+      font-size: .86rem;
+      font-weight: 600;
+
+      margin-left: 4px;
+
+      border-radius: 9px;
+
+      padding: 9px 12px !important;
+
+      transition: .2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff !important;
+
+      background:
+        rgba(255,255,255,.10);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .bulletin-hero {
+      position: relative;
+
+      min-height: 440px;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          110deg,
+          rgba(16,24,40,.96),
+          rgba(16,24,40,.82),
+          rgba(181,29,42,.58)
+        );
+
+      padding-top: 80px;
+    }
+
+    .bulletin-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 520px;
+      height: 520px;
+
+      right: -180px;
+      top: -180px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.06);
+    }
+
+    .bulletin-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      left: -120px;
+      bottom: -150px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.05);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+
+      align-items: center;
+      gap: 8px;
+
+      color: #fff;
+
+      background:
+        rgba(255,255,255,.10);
+
+      border:
+        1px solid rgba(255,255,255,.18);
+
+      padding: 8px 14px;
+
+      border-radius: 999px;
+
+      font-size: .75rem;
+      font-weight: 700;
+
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .hero-badge span {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #ffb4bb;
+    }
+
+    .bulletin-hero h1 {
+      color: #fff;
+
+      font-size:
+        clamp(2.5rem, 6vw, 4.7rem);
+
+      font-weight: 800;
+
+      line-height: 1.04;
+
+      letter-spacing: -2px;
+
+      margin:
+        20px 0 18px;
+    }
+
+    .bulletin-hero h1 em {
+      color: #ffb4bb;
+      font-style: normal;
+    }
+
+    .bulletin-hero p {
+      max-width: 700px;
+
+      color:
+        rgba(255,255,255,.76);
+
+      font-size: 1rem;
+
+      line-height: 1.8;
+
+      margin-bottom: 0;
+    }
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .content-section {
+      padding: 80px 0;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+
+      font-size: .72rem;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      color: var(--navy);
+
+      font-size:
+        clamp(1.7rem, 3vw, 2.5rem);
+
+      font-weight: 800;
+
+      letter-spacing: -1px;
+
+      margin-bottom: 10px;
+    }
+
+    .section-description {
+      color: var(--muted);
+
+      line-height: 1.8;
+
+      max-width: 650px;
+    }
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+
+      height: 52px;
+
+      padding:
+        0 18px 0 48px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 14px;
+
+      outline: none;
+
+      font-size: .9rem;
+
+      background: #fff;
+
+      transition: .2s ease;
+    }
+
+    .search-box input:focus {
+      border-color:
+        rgba(181,29,42,.5);
+
+      box-shadow:
+        0 0 0 4px rgba(181,29,42,.08);
+    }
+
+    .search-icon {
+      position: absolute;
+
+      left: 18px;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      color: var(--muted);
+
+      font-size: 1.05rem;
+    }
+
+    /* =========================
+       CATEGORY
+    ========================= */
+
+    .category-filter {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+    .category-btn {
+      border: 1px solid var(--border);
+
+      background: #fff;
+
+      color: var(--muted);
+
+      border-radius: 999px;
+
+      padding:
+        9px 15px;
+
+      font-size: .78rem;
+
+      font-weight: 600;
+
+      transition: .2s ease;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+      background: var(--primary);
+
+      border-color: var(--primary);
+
+      color: #fff;
+    }
+
+    /* =========================
+       FEATURED NEWS
+    ========================= */
+
+    .featured-card {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 24px;
+
+      min-height: 420px;
+
+      box-shadow: var(--shadow);
+
+      background: var(--navy);
+    }
+
+    .featured-image {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .featured-overlay {
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          0deg,
+          rgba(10,15,25,.95) 0%,
+          rgba(10,15,25,.55) 45%,
+          rgba(10,15,25,.05) 100%
+        );
+    }
+
+    .featured-content {
+      position: absolute;
+
+      z-index: 2;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      padding: 34px;
+    }
+
+    .news-category {
+      display: inline-block;
+
+      background: var(--primary);
+
+      color: #fff;
+
+      padding:
+        6px 11px;
+
+      border-radius: 7px;
+
+      font-size: .68rem;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: .6px;
+
+      margin-bottom: 12px;
+    }
+
+    .featured-content h2 {
+      color: #fff;
+
+      font-size:
+        clamp(1.45rem, 3vw, 2.3rem);
+
+      line-height: 1.25;
+
+      font-weight: 800;
+
+      max-width: 850px;
+
+      margin-bottom: 12px;
+    }
+
+    .news-date {
+      color:
+        rgba(255,255,255,.68);
+
+      font-size: .75rem;
+    }
+
+    /* =========================
+       NEWS CARD
+    ========================= */
+
+    .news-card {
+      height: 100%;
+
+      background: #fff;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .news-card:hover {
+      transform:
+        translateY(-6px);
+
+      border-color:
+        rgba(181,29,42,.16);
+
+      box-shadow:
+        0 18px 45px
+        rgba(16,24,40,.10);
+    }
+
+    .news-image-wrapper {
+      position: relative;
+
+      height: 205px;
+
+      overflow: hidden;
+
+      background: #eef0f3;
+    }
+
+    .news-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform .45s ease;
+    }
+
+    .news-card:hover .news-image {
+      transform: scale(1.05);
+    }
+
+    .news-body {
+      padding: 20px;
+    }
+
+    .news-body .news-category {
+      margin-bottom: 10px;
+
+      font-size: .62rem;
+
+      padding:
+        5px 9px;
+    }
+
+    .news-body h3 {
+      color: var(--navy);
+
+      font-size: 1rem;
+
+      line-height: 1.45;
+
+      font-weight: 750;
+
+      margin-bottom: 10px;
+    }
+
+    .news-body p {
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      line-height: 1.7;
+
+      margin-bottom: 15px;
+    }
+
+    .news-meta {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding-top: 13px;
+
+      border-top:
+        1px solid var(--border);
+
+      font-size: .72rem;
+
+      color: var(--muted);
+    }
+
+    .read-more {
+      color: var(--primary);
+
+      font-weight: 700;
+
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      color: var(--primary-dark);
+    }
+
+    /* =========================
+       EMPTY
+    ========================= */
+
+    .empty-state {
+      display: none;
+
+      text-align: center;
+
+      padding: 60px 20px;
+
+      border:
+        1px dashed var(--border);
+
+      border-radius: 18px;
+
+      color: var(--muted);
+    }
+
+    .empty-state-icon {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+      place-items: center;
+
+      margin:
+        0 auto 15px;
+
+      border-radius: 16px;
+
+      background:
+        var(--primary-soft);
+
+      color:
+        var(--primary);
+
+      font-size: 1.4rem;
+    }
+
+    /* =========================
+       PAGINATION
+    ========================= */
+
+    .pagination {
+      gap: 6px;
+    }
+
+    .page-link {
+      border:
+        1px solid var(--border);
+
+      color: var(--text);
+
+      border-radius: 10px !important;
+
+      width: 40px;
+      height: 40px;
+
+      display: grid;
+
+      place-items: center;
+
+      font-size: .82rem;
+
+      font-weight: 600;
+    }
+
+    .page-link:hover,
+    .page-item.active .page-link {
+      background: var(--primary);
+
+      border-color: var(--primary);
+
+      color: #fff;
+    }
+
+    /* =========================
+       INFO STRIP
+    ========================= */
+
+    .info-strip {
+      background:
+        linear-gradient(
+          120deg,
+          var(--navy),
+          #1b2435
+        );
+
+      border-radius: 22px;
+
+      padding: 35px;
+
+      color: #fff;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .info-strip::after {
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+      height: 220px;
+
+      right: -80px;
+      top: -100px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(181,29,42,.35);
+    }
+
+    .info-strip h3 {
+      font-size: 1.25rem;
+
+      font-weight: 800;
+
+      margin-bottom: 8px;
+    }
+
+    .info-strip p {
+      color:
+        rgba(255,255,255,.68);
+
+      font-size: .85rem;
+
+      line-height: 1.7;
+
+      margin: 0;
+
+      max-width: 650px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #0b1220;
+
+      color:
+        rgba(255,255,255,.62);
+
+      padding:
+        45px 0 25px;
+    }
+
+    footer h5 {
+      color: #fff;
+
+      font-weight: 700;
+
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      font-size: .82rem;
+
+      line-height: 1.8;
+    }
+
+    .footer-line {
+      border-top:
+        1px solid rgba(255,255,255,.08);
+
+      margin-top: 25px;
+
+      padding-top: 20px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 767px) {
+
+      .bulletin-hero {
+        min-height: 400px;
+      }
+
+      .bulletin-hero h1 {
+        letter-spacing: -1.3px;
+      }
+
+      .content-section {
+        padding: 60px 0;
+      }
+
+      .featured-card {
+        min-height: 400px;
+      }
+
+      .featured-content {
+        padding: 23px;
+      }
+
+      .news-image-wrapper {
+        height: 190px;
+      }
+
+      .info-strip {
+        padding: 25px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- =========================
+     LOADING
+========================= -->
+
+<div id="loading">
+
+  <div class="spinner-border"></div>
+
+  <div class="fw-semibold mt-3">
+    Memuat Buletin Datin...
+  </div>
+
+  <small class="text-secondary">
+    KPU Kabupaten Tebo
+  </small>
+
+</div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+  <div class="container">
+
+    <a
+      class="navbar-brand fw-bold d-flex align-items-center"
+      href="index.html">
+
+      <img
+        src="kpu logo.png"
+        class="me-2"
+        alt="Logo KPU">
+
+      <span>
+        DATA PEMILIH
+        <span class="d-none d-sm-inline">
+          KPU TEBO
+        </span>
+      </span>
+
+    </a>
+
+
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav">
+
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="index.html">
+            Home
+          </a>
+
+        </li>
+
+
+        <li class="nav-item dropdown">
+
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            data-bs-toggle="dropdown">
+
+            Data Pemilih
+
+          </a>
+
+          <ul
+            class="dropdown-menu dropdown-menu-end">
+
+            <li>
+
+              <a
+                class="dropdown-item"
+                href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5"
+                target="_blank">
+
+                Data Pemilih Tebo 2025
+
+              </a>
+
+            </li>
+
+            <li>
+
+              <a
+                class="dropdown-item"
+                href="https://lookerstudio.google.com/reporting/241100f4-2089-4929-a89e-7e0efdcd3337"
+                target="_blank">
+
+                Data Pemilih Tebo 2026
+
+              </a>
+
+            </li>
+
+          </ul>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="galeri.html">
+
+            Galeri
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link active"
+            href="buletin-datin.html">
+
+            Buletin Datin
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="https://cekdptonline.kpu.go.id"
+            target="_blank">
+
+            Cek DPT
+
+          </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+          <a
+            class="nav-link"
+            href="tentang-rendatin.html">
+
+            Tentang
+
+          </a>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="bulletin-hero">
+
+  <div class="container hero-content">
+
+    <div class="hero-badge">
+
+      <span></span>
+
+      Buletin Datin
+
+    </div>
+
+
+    <h1>
+
+      Informasi,
+      <em>Data</em>,
+      dan Kegiatan KPU Tebo.
+
+    </h1>
+
+
+    <p>
+
+      Ruang informasi Perencanaan, Data dan Informasi
+      KPU Kabupaten Tebo yang menyajikan berita,
+      kegiatan, pembaruan data, dokumentasi,
+      serta informasi kepemiluan.
+
+    </p>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<main>
+
+  <section class="content-section">
+
+    <div class="container">
+
+
+      <!-- HEADER -->
+
+      <div
+        class="row align-items-end mb-4"
+        data-aos="fade-up">
+
+        <div class="col-lg-7">
+
+          <div class="section-kicker">
+            Informasi Terbaru
+          </div>
+
+          <h2 class="section-title">
+            Berita dan Kegiatan
+          </h2>
+
+          <p class="section-description mb-0">
+
+            Ikuti informasi terbaru mengenai kegiatan,
+            data pemilih, pemutakhiran data,
+            koordinasi dan aktivitas KPU Kabupaten Tebo.
+
+          </p>
+
+        </div>
+
+
+        <div class="col-lg-5 mt-4 mt-lg-0">
+
+          <div class="search-box">
+
+            <span class="search-icon">
+              🔎
+            </span>
+
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Cari berita...">
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CATEGORY -->
+
+      <div
+        class="category-filter mb-5"
+        id="categoryFilter">
+
+        <button
+          class="category-btn active"
+          data-category="Semua">
+
+          Semua
+
+        </button>
+
+        <button
+          class="category-btn"
+          data-category="Kegiatan">
+
+          Kegiatan
+
+        </button>
+
+        <button
+          class="category-btn"
+          data-category="Data Pemilih">
+
+          Data Pemilih
+
+        </button>
+
+        <button
+          class="category-btn"
+          data-category="PDPB">
+
+          PDPB
+
+        </button>
+
+        <button
+          class="category-btn"
+          data-category="Koordinasi">
+
+          Koordinasi
+
+        </button>
+
+        <button
+          class="category-btn"
+          data-category="Informasi">
+
+          Informasi
+
+        </button>
+
+      </div>
+
+
+
+      <!-- =========================
+           FEATURED
+      ========================= -->
+
+      <div
+        class="featured-card mb-5"
+        data-aos="fade-up">
+
+        <img
+          src="berita1.jpg"
+          class="featured-image"
+          alt="Berita utama KPU Kabupaten Tebo">
+
+        <div class="featured-overlay"></div>
+
+        <div class="featured-content">
+
+          <span class="news-category">
+            Berita Utama
+          </span>
+
+          <h2>
+            KPU Kabupaten Tebo Terus Perkuat
+            Pengelolaan dan Pemutakhiran Data Pemilih
+          </h2>
+
+          <div class="news-date">
+            12 Agustus 2026 · KPU Kabupaten Tebo
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =========================
+           BERITA TERBARU
+      ========================= -->
+
+      <div class="d-flex justify-content-between
+                  align-items-center mb-4">
+
+        <div>
+
+          <div class="section-kicker">
+            Buletin Datin
+          </div>
+
+          <h2 class="section-title mb-0">
+            Berita Terbaru
+          </h2>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- NEWS GRID -->
+
+      <div
+        class="row g-4"
+        id="newsContainer">
+
+      </div>
+
+
+
+      <!-- EMPTY -->
+
+      <div
+        class="empty-state mt-4"
+        id="emptyState">
+
+        <div class="empty-state-icon">
+          🔎
+        </div>
+
+        <h5 class="fw-bold text-dark">
+          Berita tidak ditemukan
+        </h5>
+
+        <p class="mb-0">
+          Coba gunakan kata kunci atau kategori
+          yang berbeda.
+        </p>
+
+      </div>
+
+
+
+      <!-- PAGINATION -->
+
+      <nav
+        class="mt-5"
+        aria-label="Pagination">
+
+        <ul
+          class="pagination justify-content-center"
+          id="pagination">
+
+        </ul>
+
+      </nav>
+
+
+
+      <!-- INFO -->
+
+      <div
+        class="info-strip mt-5"
+        data-aos="fade-up">
+
+        <div class="position-relative"
+             style="z-index:2">
+
+          <h3>
+            Tentang Buletin Datin
+          </h3>
+
+          <p>
+
+            Buletin Datin merupakan media informasi
+            yang dikembangkan untuk menyajikan
+            kegiatan dan informasi terkait
+            Perencanaan, Data dan Informasi
+            KPU Kabupaten Tebo secara lebih mudah,
+            informatif dan transparan.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="row g-4">
+
+      <div class="col-lg-7">
+
+        <h5>
+          Buletin Datin KPU Kabupaten Tebo
+        </h5>
+
+        <p class="mb-0">
+
+          Media informasi Perencanaan,
+          Data dan Informasi KPU Kabupaten Tebo
+          yang menyajikan berita, kegiatan,
+          data dan dokumentasi kepemiluan.
+
+        </p>
+
+      </div>
+
+
+      <div class="col-lg-5">
+
+        <h5>
+          Rendatin KPU Tebo
+        </h5>
+
+        <p class="mb-0">
+
+          Perencanaan, Data dan Informasi
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="footer-line d-flex
+             flex-column flex-md-row
+             justify-content-between gap-2">
+
+      <small>
+        &copy; 2026 KPU Kabupaten Tebo
+      </small>
+
+      <small>
+        Buletin Datin
+      </small>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =========================
+     BOOTSTRAP
+========================= -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<script>
+
+/* =========================
+   DATA BERITA
+========================= */
+
+const berita = [
+
+  {
+    title:
+      "KPU Kabupaten Tebo Terus Perkuat Pengelolaan Data Pemilih",
+
+    category:
+      "Data Pemilih",
+
+    date:
+      "12 Agustus 2026",
+
+    image:
+      "berita1.jpg",
+
+    description:
+      "KPU Kabupaten Tebo terus melakukan pengelolaan dan pemutakhiran data pemilih secara berkelanjutan.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "KPU Tebo Laksanakan Koordinasi Terkait Pemutakhiran Data Pemilih",
+
+    category:
+      "Koordinasi",
+
+    date:
+      "10 Agustus 2026",
+
+    image:
+      "berita2.jpg",
+
+    description:
+      "Koordinasi dilakukan sebagai bagian dari upaya memperkuat kualitas dan akurasi data pemilih.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "Pemutakhiran Data Pemilih Berkelanjutan KPU Kabupaten Tebo",
+
+    category:
+      "PDPB",
+
+    date:
+      "8 Agustus 2026",
+
+    image:
+      "berita3.jpg",
+
+    description:
+      "Pemutakhiran Data Pemilih Berkelanjutan terus dilakukan untuk menjaga kualitas data pemilih.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "KPU Kabupaten Tebo Tingkatkan Kualitas Penyajian Data",
+
+    category:
+      "Informasi",
+
+    date:
+      "6 Agustus 2026",
+
+    image:
+      "berita4.jpg",
+
+    description:
+      "Penyajian data yang informatif menjadi bagian penting dalam mendukung keterbukaan informasi publik.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "Rapat Koordinasi Pengelolaan Data dan Informasi",
+
+    category:
+      "Kegiatan",
+
+    date:
+      "4 Agustus 2026",
+
+    image:
+      "berita5.jpg",
+
+    description:
+      "Kegiatan koordinasi dilaksanakan untuk meningkatkan sinergi dalam pengelolaan data dan informasi.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "Visualisasi Data Pemilih Kabupaten Tebo",
+
+    category:
+      "Data Pemilih",
+
+    date:
+      "2 Agustus 2026",
+
+    image:
+      "berita6.jpg",
+
+    description:
+      "Visualisasi data dikembangkan untuk mempermudah masyarakat memahami informasi data pemilih.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "Kegiatan Rendatin KPU Kabupaten Tebo",
+
+    category:
+      "Kegiatan",
+
+    date:
+      "30 Juli 2026",
+
+    image:
+      "berita7.jpg",
+
+    description:
+      "Tim Perencanaan, Data dan Informasi terus mendukung pelaksanaan tugas kepemiluan.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "KPU Tebo Perkuat Transparansi Informasi Data",
+
+    category:
+      "Informasi",
+
+    date:
+      "28 Juli 2026",
+
+    image:
+      "berita8.jpg",
+
+    description:
+      "Keterbukaan informasi menjadi salah satu bagian penting dalam pelayanan informasi kepada masyarakat.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "Koordinasi Pemutakhiran Data Bersama Stakeholder",
+
+    category:
+      "Koordinasi",
+
+    date:
+      "25 Juli 2026",
+
+    image:
+      "berita9.jpg",
+
+    description:
+      "Koordinasi bersama stakeholder dilakukan dalam rangka mendukung pemutakhiran data pemilih.",
+
+    link:
+      "#"
+  },
+
+
+  {
+    title:
+      "Informasi Terbaru Data Pemilih Kabupaten Tebo",
+
+    category:
+      "PDPB",
+
+    date:
+      "22 Juli 2026",
+
+    image:
+      "berita10.jpg",
+
+    description:
+      "Informasi terbaru terkait perkembangan data pemilih Kabupaten Tebo.",
+
+    link:
+      "#"
+  }
+
+];
+
+
+/* =========================
+   VARIABLE
+========================= */
+
+let currentCategory = "Semua";
+
+let currentPage = 1;
+
+const perPage = 6;
+
+
+
+/* =========================
+   ELEMENT
+========================= */
+
+const newsContainer =
+  document.getElementById("newsContainer");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const emptyState =
+  document.getElementById("emptyState");
+
+const pagination =
+  document.getElementById("pagination");
+
+
+
+/* =========================
+   FILTER DATA
+========================= */
+
+function getFilteredNews() {
+
+  const keyword =
+    searchInput.value
+      .toLowerCase()
+      .trim();
+
+
+  return berita.filter(item => {
+
+    const matchCategory =
+      currentCategory === "Semua" ||
+      item.category === currentCategory;
+
+
+    const matchSearch =
+      item.title
+        .toLowerCase()
+        .includes(keyword) ||
+
+      item.description
+        .toLowerCase()
+        .includes(keyword);
+
+
+    return matchCategory && matchSearch;
+
+  });
+
+}
+
+
+
+/* =========================
+   RENDER NEWS
+========================= */
+
+function renderNews() {
+
+  const filtered =
+    getFilteredNews();
+
+
+  const totalPages =
+    Math.ceil(
+      filtered.length / perPage
+    );
+
+
+  if (currentPage > totalPages) {
+    currentPage = 1;
+  }
+
+
+  const start =
+    (currentPage - 1) * perPage;
+
+
+  const end =
+    start + perPage;
+
+
+  const pageItems =
+    filtered.slice(start, end);
+
+
+  newsContainer.innerHTML = "";
+
+
+  if (pageItems.length === 0) {
+
+    emptyState.style.display =
+      "block";
+
+    pagination.innerHTML =
+      "";
+
+    return;
+
+  }
+
+
+  emptyState.style.display =
+    "none";
+
+
+  pageItems.forEach(
+    (item, index) => {
+
+      const card =
+        document.createElement("div");
+
+
+      card.className =
+        "col-md-6 col-lg-4";
+
+
+      card.setAttribute(
+        "data-aos",
+        "fade-up"
+      );
+
+
+      card.setAttribute(
+        "data-aos-delay",
+        index * 50
+      );
+
+
+      card.innerHTML = `
+
+        <article class="news-card">
+
+          <div class="news-image-wrapper">
+
+            <img
+              src="${item.image}"
+              class="news-image"
+              alt="${item.title}"
+              loading="lazy">
+
+          </div>
+
+
+          <div class="news-body">
+
+            <span class="news-category">
+              ${item.category}
+            </span>
+
+
+            <h3>
+              ${item.title}
+            </h3>
+
+
+            <p>
+              ${item.description}
+            </p>
+
+
+            <div class="news-meta">
+
+              <span>
+                ${item.date}
+              </span>
+
+              <a
+                href="${item.link}"
+                class="read-more">
+
+                Baca →
+                
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      `;
+
+
+      newsContainer.appendChild(card);
+
+    }
+  );
+
+
+  renderPagination(totalPages);
+
+}
+
+
+
+/* =========================
+   PAGINATION
+========================= */
+
+function renderPagination(totalPages) {
+
+  pagination.innerHTML = "";
+
+
+  if (totalPages <= 1) {
+    return;
+  }
+
+
+  for (
+    let i = 1;
+    i <= totalPages;
+    i++
+  ) {
+
+    const li =
+      document.createElement("li");
+
+
+    li.className =
+      `page-item ${
+        i === currentPage
+          ? "active"
+          : ""
+      }`;
+
+
+    li.innerHTML = `
+
+      <button
+        class="page-link"
+        onclick="changePage(${i})">
+
+        ${i}
+
+      </button>
+
+    `;
+
+
+    pagination.appendChild(li);
+
+  }
+
+}
+
+
+
+function changePage(page) {
+
+  currentPage = page;
+
+  renderNews();
+
+  window.scrollTo({
+    top:
+      document.querySelector(
+        "#newsContainer"
+      ).offsetTop - 120,
+
+    behavior: "smooth"
+  });
+
+}
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+searchInput.addEventListener(
+  "input",
+  () => {
+
+    currentPage = 1;
+
+    renderNews();
+
+  }
+);
+
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+document
+  .querySelectorAll(".category-btn")
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(
+            ".category-btn"
+          )
+          .forEach(btn =>
+            btn.classList.remove(
+              "active"
+            )
+          );
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        currentCategory =
+          button.dataset.category;
+
+
+        currentPage = 1;
+
+        renderNews();
+
+      }
+    );
+
+  });
+
+
+
+/* =========================
+   LOADING
+========================= */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    setTimeout(
+      () => {
+
+        const loading =
+          document.getElementById(
+            "loading"
+          );
+
+
+        loading.style.opacity =
+          "0";
+
+
+        setTimeout(
+          () => {
+
+            loading.style.display =
+              "none";
+
+          },
+          400
+        );
+
+      },
+      400
+    );
+
+  }
+);
+
+
+
+/* =========================
+   INITIAL
+========================= */
+
+renderNews();
+
+</script>
+
 </body>
 </html>
