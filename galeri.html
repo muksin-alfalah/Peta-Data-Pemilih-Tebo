@@ -3,255 +3,1634 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Galeri KPU Kabupaten Tebo</title>
 
-  <!-- SEO Meta -->
   <meta name="description" content="Galeri KPU Kabupaten Tebo - Dokumentasi foto kegiatan, peta, sosialisasi, dan video informasi terkait data pemilih di Kabupaten Tebo.">
   <meta name="keywords" content="Galeri, Foto Kegiatan, KPU Tebo, Pemilu, Data Pemilih, Video Pemilu">
   <meta name="author" content="Rendatin KPU Tebo">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Galeri KPU Kabupaten Tebo">
   <meta property="og:description" content="Lihat dokumentasi foto dan video kegiatan KPU Kabupaten Tebo.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://peta-data-pemilih-tebo.vercel.app/galeri.html">
   <meta property="og:image" content="https://peta-data-pemilih-tebo.vercel.app/thumbnail.jpg">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- AOS CSS -->
+
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <!-- Lightbox2 CSS (foto) -->
+
+  <!-- Lightbox -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
-  <!-- VenoBox CSS (video) -->
+
+  <!-- VenoBox -->
   <link href="https://cdn.jsdelivr.net/npm/venobox@2.0.6/dist/venobox.min.css" rel="stylesheet">
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Verdana', sans-serif;
-      background-color: #f8f9fa;
+    :root {
+      --primary: #b51d2a;
+      --primary-dark: #8f1520;
+      --navy: #101828;
+      --text: #344054;
+      --muted: #667085;
+      --soft: #f7f8fa;
+      --border: #eaecf0;
+      --white: #ffffff;
+      --shadow: 0 15px 40px rgba(16, 24, 40, .08);
     }
-    /* Loading Screen */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--soft);
+      color: var(--text);
+    }
+
+    /* =========================
+       LOADING
+    ========================= */
+
     #loading {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      z-index: 9999;
+      inset: 0;
+      background: #ffffff;
+      z-index: 99999;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      gap: 12px;
+      transition: opacity .4s ease, visibility .4s ease;
     }
-    .spinner-border {
-      width: 4rem;
-      height: 4rem;
+
+    #loading.hide {
+      opacity: 0;
+      visibility: hidden;
     }
-    .gallery-img, .gallery-video {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
+
+    #loading .spinner-border {
+      width: 2.8rem;
+      height: 2.8rem;
+      color: var(--primary);
+    }
+
+    #loading p {
+      margin: 0;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    #loading small {
+      color: var(--muted);
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      background: rgba(16, 24, 40, .90) !important;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: 11px 0;
+      transition: all .3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 8px 25px rgba(0,0,0,.15);
+    }
+
+    .navbar-brand {
+      font-size: .92rem;
+      letter-spacing: .2px;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      background: #fff;
+      padding: 3px;
       border-radius: 10px;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,.78) !important;
+      font-size: .86rem;
+      font-weight: 600;
+      padding: 9px 13px !important;
+      border-radius: 9px;
+      margin-left: 3px;
+      transition: .25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff !important;
+      background: rgba(255,255,255,.11);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 150px 0 100px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(181,29,42,.45), transparent 28%),
+        radial-gradient(circle at 10% 80%, rgba(181,29,42,.18), transparent 30%),
+        linear-gradient(135deg, #101828 0%, #182230 55%, #101828 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      right: -160px;
+      top: -180px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 50%;
+      left: -140px;
+      bottom: -160px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-badge span {
+      width: 7px;
+      height: 7px;
+      background: #ffb4bb;
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(255,180,187,.7);
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      font-weight: 800;
+      margin: 22px auto 16px;
+      max-width: 900px;
+    }
+
+    .hero h1 span {
+      color: #ffb4bb;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,.72);
+      max-width: 680px;
+      margin: auto;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .gallery-section {
+      padding: 75px 0 90px;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-size: .73rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: -1px;
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.75;
+    }
+
+    /* =========================
+       FILTER
+    ========================= */
+
+    .filter-wrapper {
+      margin: 35px auto 45px;
+      padding: 7px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(16,24,40,.05);
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .filter-btn {
+      border: 0 !important;
+      background: transparent !important;
+      color: var(--muted) !important;
+      border-radius: 10px !important;
+      padding: 10px 17px !important;
+      font-size: .82rem;
+      font-weight: 700;
+      transition: .25s ease;
+      margin: 0 !important;
+    }
+
+    .filter-btn:hover {
+      color: var(--primary) !important;
+      background: #fcecee !important;
+    }
+
+    .filter-btn.active {
+      color: #fff !important;
+      background: var(--primary) !important;
+      box-shadow: 0 5px 15px rgba(181,29,42,.22);
+    }
+
+    /* =========================
+       GALLERY CARD
+    ========================= */
+
+    .gallery-item {
+      transition: all .35s ease;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 25px rgba(16,24,40,.06);
+      padding: 7px;
+      height: 100%;
+      transition: .35s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+      border-color: rgba(181,29,42,.18);
+    }
+
+    .gallery-media {
+      position: relative;
+      overflow: hidden;
+      border-radius: 13px;
+      background: #e9ecef;
+    }
+
+    .gallery-img,
+    .gallery-video {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: transform .5s ease;
       cursor: pointer;
     }
-    .gallery-img:hover, .gallery-video:hover {
-      transform: scale(1.05);
-      box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
+
+    .gallery-card:hover .gallery-img,
+    .gallery-card:hover .gallery-video {
+      transform: scale(1.055);
     }
-    .filter-btn {
-      margin: 5px;
-    }
-    footer {
-      background: #212529;
-      color: white;
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
       padding: 15px;
-      text-align: center;
-      margin-top: 30px;
+      background: linear-gradient(
+        to top,
+        rgba(16,24,40,.65),
+        transparent 55%
+      );
+      pointer-events: none;
     }
+
+    .gallery-tag {
+      color: #fff;
+      background: rgba(181,29,42,.92);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .gallery-number {
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      opacity: .85;
+    }
+
+    .video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(181,29,42,.95);
+      color: #fff;
+      font-size: 1.25rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,.25);
+      z-index: 2;
+    }
+
+    /* =========================
+       PAGINATION
+    ========================= */
+
+    .pagination {
+      margin-top: 45px;
+      gap: 6px;
+    }
+
+    .page-link {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: #fff;
+      border-radius: 9px !important;
+      min-width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      font-size: .82rem;
+      font-weight: 700;
+      box-shadow: none !important;
+    }
+
+    .page-link:hover {
+      color: var(--primary);
+      background: #fcecee;
+      border-color: #f0c5ca;
+    }
+
+    .page-item.active .page-link {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #0b1220;
+      color: rgba(255,255,255,.65);
+      padding: 45px 0 25px;
+      margin-top: 20px;
+    }
+
+    .footer-title {
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: .84rem;
+      line-height: 1.7;
+    }
+
+    .footer-line {
+      border-top: 1px solid rgba(255,255,255,.09);
+      margin-top: 28px;
+      padding-top: 20px;
+    }
+
     .hidden {
       display: none !important;
     }
-    /* Pagination */
-    .pagination {
-      justify-content: center;
-      margin-top: 30px;
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 991px) {
+      .hero {
+        padding: 135px 0 85px;
+      }
+
+      .gallery-section {
+        padding-top: 60px;
+      }
     }
-    .page-item.disabled .page-link {
-      pointer-events: none;
-      opacity: 0.5;
+
+    @media (max-width: 767px) {
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .filter-wrapper {
+        width: 100%;
+        display: flex;
+      }
+
+      .filter-btn {
+        flex: 1;
+      }
+
+      .gallery-img,
+      .gallery-video {
+        height: 230px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .navbar-brand {
+        font-size: .78rem;
+      }
+
+      .navbar-brand img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hero {
+        padding: 125px 0 75px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: .9rem;
+      }
+
+      .gallery-section {
+        padding: 55px 0 70px;
+      }
+
+      .filter-btn {
+        font-size: .72rem;
+        padding: 9px 8px !important;
+      }
+
+      .gallery-img,
+      .gallery-video {
+        height: 220px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- Loading Screen -->
-  <div id="loading">
-    <div class="spinner-border text-primary" role="status"></div>
-    <p class="mt-3">Memuat Data...</p>
+
+<!-- =========================
+     LOADING
+========================= -->
+
+<div id="loading">
+  <div class="spinner-border" role="status"></div>
+  <p>Memuat Galeri...</p>
+  <small>Galeri KPU Kabupaten Tebo</small>
+</div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
+  <div class="container">
+
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <img src="kpu logo.png" alt="Logo KPU" class="me-2">
+      <span>KPU KABUPATEN TEBO</span>
+    </a>
+
+    <button
+      class="navbar-toggler border-0 shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-label="Buka menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5"
+            target="_blank"
+            rel="noopener">
+            Data Pemilih Tebo
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="galeri.html">Galeri</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="buletin-datin.html">Buletin Datin</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="tentang-rendatin.html">Tentang</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+  <div class="container text-center hero-content" data-aos="fade-up">
+
+    <div class="hero-badge">
+      <span></span>
+      Dokumentasi & Informasi
+    </div>
+
+    <h1>
+      Galeri <span>KPU Kabupaten Tebo</span>
+    </h1>
+
+    <p>
+      Jelajahi dokumentasi kegiatan, sosialisasi, dan berbagai informasi
+      visual KPU Kabupaten Tebo dalam satu ruang digital.
+    </p>
+
   </div>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-        <img src="kpu logo.png" alt="Logo KPU" width="40" height="40" class="me-2">
-        KPU KABUPATEN TEBO
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target="_blank">Data Pemilih Tebo</a></li>
-          <li class="nav-item"><a class="nav-link active" href="galeri.html">Galeri</a></li>
-          <li class="nav-item"><a class="nav-link" href="buletin-datin.html">Buletin Datin</a></li>
-          <li class="nav-item"><a class="nav-link" href="tentang-rendatin.html">Tentang</a></li>
-        </ul>
+</header>
+
+
+<!-- =========================
+     GALERI
+========================= -->
+
+<main class="gallery-section">
+
+  <div class="container">
+
+    <!-- Heading -->
+
+    <div class="text-center" data-aos="fade-up">
+
+      <div class="section-kicker">
+        Dokumentasi
       </div>
-    </div>
-  </nav>
 
-  <!-- Hero Banner -->
-  <header class="bg-dark text-white text-center py-5 mt-5" data-aos="zoom-in">
-    <div class="container">
-      <h1 class="fw-bold">Galeri KPU Kabupaten Tebo</h1>
-      <p class="lead">Dokumentasi foto kegiatan, peta, sosialisasi, dan video informasi</p>
-    </div>
-  </header>
+      <h2 class="section-title">
+        Kumpulan Foto & Video
+      </h2>
 
-  <!-- Filter -->
-  <div class="container text-center my-4" data-aos="fade-up">
-    <button class="btn btn-outline-dark filter-btn active" data-filter="all">Semua</button>
-    <button class="btn btn-outline-dark filter-btn" data-filter="kegiatan">Kegiatan</button>
-    <button class="btn btn-outline-dark filter-btn" data-filter="sosialisasi">Sosialisasi</button>
-    <button class="btn btn-outline-dark filter-btn" data-filter="video">Video</button>
+      <p class="section-description">
+        Temukan berbagai dokumentasi kegiatan KPU Kabupaten Tebo.
+        Gunakan kategori di bawah untuk melihat dokumentasi berdasarkan jenis kegiatan.
+      </p>
+
+    </div>
+
+
+    <!-- Filter -->
+
+    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+
+      <div class="filter-wrapper">
+
+        <button
+          class="filter-btn active"
+          data-filter="all">
+          Semua
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="kegiatan">
+          Kegiatan
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="sosialisasi">
+          Sosialisasi
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="video">
+          Video
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         GALLERY GRID
+    ========================= -->
+
+    <div class="row g-4" id="galleryGrid">
+
+
+      <!-- FOTO KEGIATAN -->
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan1.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 1">
+              <img src="foto_kegiatan/kegiatan1.jpeg"
+                   alt="Kegiatan 1"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">01</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan2.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 2">
+              <img src="foto_kegiatan/kegiatan2.jpeg"
+                   alt="Kegiatan 2"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">02</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan3.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 3">
+              <img src="foto_kegiatan/kegiatan3.jpeg"
+                   alt="Kegiatan 3"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">03</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan4.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 4">
+              <img src="foto_kegiatan/kegiatan4.jpeg"
+                   alt="Kegiatan 4"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">04</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan5.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 5">
+              <img src="foto_kegiatan/kegiatan5.jpeg"
+                   alt="Kegiatan 5"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">05</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan6.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 6">
+              <img src="foto_kegiatan/kegiatan6.jpeg"
+                   alt="Kegiatan 6"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">06</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan7.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 7">
+              <img src="foto_kegiatan/kegiatan7.jpeg"
+                   alt="Kegiatan 7"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">07</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan8.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 8">
+              <img src="foto_kegiatan/kegiatan8.jpeg"
+                   alt="Kegiatan 8"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">08</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto_kegiatan/kegiatan9.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 9">
+              <img src="foto_kegiatan/kegiatan9.jpeg"
+                   alt="Kegiatan 9"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">09</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- FOTO LAINNYA -->
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 1.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 1">
+              <img src="foto 1.jpeg"
+                   alt="Kegiatan 1"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 34.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 2">
+              <img src="foto 34.jpeg"
+                   alt="Kegiatan 2"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">11</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 4.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 3">
+              <img src="foto 4.jpeg"
+                   alt="Kegiatan 3"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">12</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 5.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 4">
+              <img src="foto 5.jpeg"
+                   alt="Kegiatan 4"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">13</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 21.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 5">
+              <img src="foto 21.jpeg"
+                   alt="Kegiatan 5"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">14</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 33.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 6">
+              <img src="foto 33.jpeg"
+                   alt="Kegiatan 6"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">15</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 32.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 7">
+              <img src="foto 32.jpeg"
+                   alt="Kegiatan 7"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">16</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 31.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 8">
+              <img src="foto 31.jpeg"
+                   alt="Kegiatan 8"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">17</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 26.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 8">
+              <img src="foto 26.jpeg"
+                   alt="Kegiatan 8"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">18</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 27.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 8">
+              <img src="foto 27.jpeg"
+                   alt="Kegiatan 8"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">19</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 24.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 8">
+              <img src="foto 24.jpeg"
+                   alt="Kegiatan 8"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">20</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item kegiatan">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 29.jpeg"
+               data-lightbox="galeri"
+               data-title="Kegiatan 8">
+              <img src="foto 29.jpeg"
+                   alt="Kegiatan 8"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Kegiatan</span>
+              <span class="gallery-number">21</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- SOSIALISASI -->
+
+      <div class="col-sm-6 col-lg-4 gallery-item sosialisasi">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 3.jpeg"
+               data-lightbox="galeri"
+               data-title="Sosialisasi 1">
+              <img src="foto 3.jpeg"
+                   alt="Sosialisasi 1"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Sosialisasi</span>
+              <span class="gallery-number">01</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item sosialisasi">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 6.jpeg"
+               data-lightbox="galeri"
+               data-title="Sosialisasi 2">
+              <img src="foto 6.jpeg"
+                   alt="Sosialisasi 2"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Sosialisasi</span>
+              <span class="gallery-number">02</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-lg-4 gallery-item sosialisasi">
+        <div class="gallery-card">
+          <div class="gallery-media">
+            <a href="foto 9.jpeg"
+               data-lightbox="galeri"
+               data-title="Sosialisasi 3">
+              <img src="foto 9.jpeg"
+                   alt="Sosialisasi 3"
+                   class="gallery-img">
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Sosialisasi</span>
+              <span class="gallery-number">03</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- VIDEO -->
+
+      <div class="col-sm-6 col-lg-4 gallery-item video">
+
+        <div class="gallery-card">
+
+          <div class="gallery-media">
+
+            <a
+              class="venobox"
+              data-autoplay="true"
+              data-vbtype="video"
+              href="video.mp4">
+
+              <img
+                src="foto 28.png"
+                alt="Video 1"
+                class="gallery-video">
+
+              <div class="video-play">
+                ▶
+              </div>
+
+            </a>
+
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Video</span>
+              <span class="gallery-number">01</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         PAGINATION
+    ========================= -->
+
+    <nav aria-label="Navigasi galeri">
+
+      <ul
+        class="pagination"
+        id="pagination">
+      </ul>
+
+    </nav>
+
   </div>
 
-  <!-- Galeri -->
-  <main class="container my-5">
-    <div class="row g-4" id="galleryGrid">
-      <!-- Foto Kegiatan (8 item) -->
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan1.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan1.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan2.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan2.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan3.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan3.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan4.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan4.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan5.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan5.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan6.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan6.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan7.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan7.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan8.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan8.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto_kegiatan/kegiatan9.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto_kegiatan/kegiatan9.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 1.jpeg" data-lightbox="galeri" data-title="Kegiatan 1"><img src="foto 1.jpeg" alt="Kegiatan 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 34.jpeg" data-lightbox="galeri" data-title="Kegiatan 2"><img src="foto 34.jpeg" alt="Kegiatan 2" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 4.jpeg" data-lightbox="galeri" data-title="Kegiatan 3"><img src="foto 4.jpeg" alt="Kegiatan 3" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 5.jpeg" data-lightbox="galeri" data-title="Kegiatan 4"><img src="foto 5.jpeg" alt="Kegiatan 4" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 21.jpeg" data-lightbox="galeri" data-title="Kegiatan 5"><img src="foto 21.jpeg" alt="Kegiatan 5" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 33.jpeg" data-lightbox="galeri" data-title="Kegiatan 6"><img src="foto 33.jpeg" alt="Kegiatan 6" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 32.jpeg" data-lightbox="galeri" data-title="Kegiatan 7"><img src="foto 32.jpeg" alt="Kegiatan 7" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 31.jpeg" data-lightbox="galeri" data-title="Kegiatan 8"><img src="foto 31.jpeg" alt="Kegiatan 8" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 26.jpeg" data-lightbox="galeri" data-title="Kegiatan 8"><img src="foto 26.jpeg" alt="Kegiatan 8" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 27.jpeg" data-lightbox="galeri" data-title="Kegiatan 8"><img src="foto 27.jpeg" alt="Kegiatan 8" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 24.jpeg" data-lightbox="galeri" data-title="Kegiatan 8"><img src="foto 24.jpeg" alt="Kegiatan 8" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item kegiatan"><a href="foto 29.jpeg" data-lightbox="galeri" data-title="Kegiatan 8"><img src="foto 29.jpeg" alt="Kegiatan 8" class="gallery-img shadow-sm"></a></div>
+</main>
 
-      <!-- Foto Sosialisasi (3 item) -->
-      <div class="col-md-4 gallery-item sosialisasi"><a href="foto 3.jpeg" data-lightbox="galeri" data-title="Sosialisasi 1"><img src="foto 3.jpeg" alt="Sosialisasi 1" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item sosialisasi"><a href="foto 6.jpeg" data-lightbox="galeri" data-title="Sosialisasi 2"><img src="foto 6.jpeg" alt="Sosialisasi 2" class="gallery-img shadow-sm"></a></div>
-      <div class="col-md-4 gallery-item sosialisasi"><a href="foto 9.jpeg" data-lightbox="galeri" data-title="Sosialisasi 3"><img src="foto 9.jpeg" alt="Sosialisasi 3" class="gallery-img shadow-sm"></a></div>
 
-      <!-- Video lokal -->
-      <div class="col-md-4 gallery-item video"><a class="venobox" data-autoplay="true" data-vbtype="video" href="video.mp4"><img src="foto 28.png" alt="Video 1" class="gallery-img"></a></div>
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="row align-items-center g-3">
+
+      <div class="col-md-8">
+
+        <div class="footer-title">
+          Galeri KPU Kabupaten Tebo
+        </div>
+
+        <p>
+          Dokumentasi kegiatan dan informasi visual
+          KPU Kabupaten Tebo.
+        </p>
+
+      </div>
+
+      <div class="col-md-4 text-md-end">
+
+        <p>
+          Rendatin KPU Tebo
+        </p>
+
+      </div>
+
     </div>
 
-    <!-- Pagination -->
-    <nav>
-      <ul class="pagination" id="pagination"></ul>
-    </nav>
-  </main>
+    <div class="footer-line d-flex flex-column flex-md-row justify-content-between gap-2">
 
-  <!-- Footer -->
-  <footer data-aos="zoom-in">
-    <p>&copy; 2025 Peta Data Pemilih Tebo | Dibuat oleh Rendatin KPU Tebo</p>
-  </footer>
+      <small>
+        &copy; 2025 Peta Data Pemilih Tebo
+      </small>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Lightbox2 JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-  <!-- VenoBox JS -->
-  <script src="https://cdn.jsdelivr.net/npm/venobox@2.0.6/dist/venobox.min.js"></script>
+      <small>
+        Dibuat oleh Rendatin KPU Tebo
+      </small>
 
-  <!-- Custom Script -->
-  <script>
-    window.addEventListener("load", function() {
-      document.getElementById("loading").style.display = "none";
-      AOS.init({ duration: 1200, once: true });
-      new VenoBox({ selector: '.venobox' });
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/venobox@2.0.6/dist/venobox.min.js"></script>
+
+
+<script>
+
+  /* =========================
+     LOADING
+  ========================= */
+
+  window.addEventListener("load", function () {
+
+    setTimeout(function () {
+
+      document.getElementById("loading").classList.add("hide");
+
+    }, 350);
+
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 60
     });
 
-    // Filter
-    const filterBtns = document.querySelectorAll(".filter-btn");
-    const galleryItems = document.querySelectorAll(".gallery-item");
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filter = btn.getAttribute("data-filter");
-        galleryItems.forEach(item => {
-          if (filter === "all" || item.classList.contains(filter)) {
-            item.classList.remove("hidden");
-          } else {
-            item.classList.add("hidden");
-          }
-        });
-        currentPage = 1;
-        showPage(currentPage);
-      });
+    new VenoBox({
+      selector: ".venobox",
+      numeration: true,
+      infinigall: true,
+      share: true,
+      spinner: "rotating-plane"
     });
 
-    // Pagination
-    const itemsPerPage = 6;
-    let currentPage = 1;
+  });
 
-    function showPage(page) {
-      const visibleItems = [...galleryItems].filter(item => !item.classList.contains("hidden"));
-      const totalPages = Math.ceil(visibleItems.length / itemsPerPage);
 
-      visibleItems.forEach((item, index) => {
-        item.style.display = (index >= (page-1)*itemsPerPage && index < page*itemsPerPage) ? "block" : "none";
-      });
+  /* =========================
+     NAVBAR SCROLL
+  ========================= */
 
-      // Render pagination
-      const pagination = document.getElementById("pagination");
-      pagination.innerHTML = "";
+  const navbar = document.getElementById("mainNavbar");
 
-      for (let i = 1; i <= totalPages; i++) {
-        pagination.innerHTML += `
-          <li class="page-item ${i === page ? 'active' : ''}">
-            <a class="page-link" href="#">${i}</a>
-          </li>
-        `;
-      }
+  window.addEventListener("scroll", function () {
 
-      document.querySelectorAll("#pagination .page-link").forEach((link, idx) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          currentPage = idx+1;
-          showPage(currentPage);
-        });
-      });
+    if (window.scrollY > 30) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
     }
 
-    showPage(currentPage);
-  </script>
+  });
+
+
+  /* =========================
+     FILTER
+  ========================= */
+
+  const filterBtns =
+    document.querySelectorAll(".filter-btn");
+
+  const galleryItems =
+    document.querySelectorAll(".gallery-item");
+
+
+  filterBtns.forEach(function (btn) {
+
+    btn.addEventListener("click", function () {
+
+      filterBtns.forEach(function (button) {
+        button.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+
+      const filter =
+        btn.getAttribute("data-filter");
+
+      galleryItems.forEach(function (item) {
+
+        if (
+          filter === "all" ||
+          item.classList.contains(filter)
+        ) {
+
+          item.classList.remove("hidden");
+
+        } else {
+
+          item.classList.add("hidden");
+
+        }
+
+      });
+
+      currentPage = 1;
+
+      showPage(currentPage);
+
+      document
+        .getElementById("galleryGrid")
+        .scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    });
+
+  });
+
+
+  /* =========================
+     PAGINATION
+  ========================= */
+
+  const itemsPerPage = 6;
+
+  let currentPage = 1;
+
+
+  function showPage(page) {
+
+    const visibleItems =
+      [...galleryItems].filter(function (item) {
+
+        return !item.classList.contains("hidden");
+
+      });
+
+
+    const totalPages =
+      Math.ceil(
+        visibleItems.length / itemsPerPage
+      );
+
+
+    galleryItems.forEach(function (item) {
+      item.style.display = "none";
+    });
+
+
+    const start =
+      (page - 1) * itemsPerPage;
+
+    const end =
+      start + itemsPerPage;
+
+
+    visibleItems
+      .slice(start, end)
+      .forEach(function (item) {
+
+        item.style.display = "";
+
+      });
+
+
+    renderPagination(totalPages);
+
+  }
+
+
+  function renderPagination(totalPages) {
+
+    const pagination =
+      document.getElementById("pagination");
+
+    pagination.innerHTML = "";
+
+
+    if (totalPages <= 1) {
+      return;
+    }
+
+
+    /* PREVIOUS */
+
+    const prevLi =
+      document.createElement("li");
+
+    prevLi.className =
+      "page-item " +
+      (currentPage === 1 ? "disabled" : "");
+
+
+    prevLi.innerHTML =
+      `<a class="page-link" href="#">
+        ‹
+      </a>`;
+
+
+    prevLi.addEventListener("click", function (e) {
+
+      e.preventDefault();
+
+      if (currentPage > 1) {
+
+        currentPage--;
+
+        showPage(currentPage);
+
+        scrollToGallery();
+
+      }
+
+    });
+
+
+    pagination.appendChild(prevLi);
+
+
+    /* PAGE NUMBERS */
+
+    for (
+      let i = 1;
+      i <= totalPages;
+      i++
+    ) {
+
+      const li =
+        document.createElement("li");
+
+      li.className =
+        "page-item " +
+        (i === currentPage ? "active" : "");
+
+
+      li.innerHTML =
+        `<a class="page-link" href="#">
+          ${i}
+        </a>`;
+
+
+      li.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        currentPage = i;
+
+        showPage(currentPage);
+
+        scrollToGallery();
+
+      });
+
+
+      pagination.appendChild(li);
+
+    }
+
+
+    /* NEXT */
+
+    const nextLi =
+      document.createElement("li");
+
+    nextLi.className =
+      "page-item " +
+      (currentPage === totalPages
+        ? "disabled"
+        : "");
+
+
+    nextLi.innerHTML =
+      `<a class="page-link" href="#">
+        ›
+      </a>`;
+
+
+    nextLi.addEventListener("click", function (e) {
+
+      e.preventDefault();
+
+      if (currentPage < totalPages) {
+
+        currentPage++;
+
+        showPage(currentPage);
+
+        scrollToGallery();
+
+      }
+
+    });
+
+
+    pagination.appendChild(nextLi);
+
+  }
+
+
+  function scrollToGallery() {
+
+    const gallery =
+      document.getElementById("galleryGrid");
+
+    const position =
+      gallery.getBoundingClientRect().top +
+      window.pageYOffset -
+      100;
+
+
+    window.scrollTo({
+      top: position,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* INITIAL */
+
+  showPage(currentPage);
+
+</script>
+
 </body>
 </html>
