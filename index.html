@@ -473,7 +473,13 @@
     }
 
     .visitor small { color: rgba(255,255,255,.65); }
-    #visitorCount { font-size: 1.7rem; font-weight: 800; }
+    #visitorCount {
+      font-size: 1.7rem;
+      font-weight: 800;
+      min-width: 90px;
+      text-align: right;
+      letter-spacing: -.5px;
+    }
 
     footer {
       background: #0b1220;
@@ -784,16 +790,131 @@
     });
   });
 
+  /* ==========================================================
+     STATISTIK PENGUNJUNG PORTAL
+     Menggunakan CounterAPI agar jumlah tersimpan online dan
+     tetap bertambah meskipun website di-refresh atau dibuka
+     dari perangkat lain.
+
+     Catatan:
+     - Pengunjung yang sama dihitung maksimal 1 kali dalam 24 jam
+       pada browser yang sama.
+     - CounterAPI V1 bersifat publik, sehingga namespace/counter
+       jangan dipakai untuk data rahasia.
+     ========================================================== */
+
+  const VISITOR_API =
+    'https://api.counterapi.dev/v1/peta-data-pemilih-tebo/pengunjung/up';
+
+  const VISITOR_KEY = 'kpu_tebo_visitor_last_count';
+  const VISITOR_INTERVAL = 24 * 60 * 60 * 1000; // 24 jam
+
+  function showVisitorCount(value) {
+    const el = document.getElementById('visitorCount');
+    const number = Number(value);
+
+    if (!Number.isFinite(number)) {
+      el.textContent = '0';
+      return;
+    }
+
+    // Animasi angka agar terlihat lebih modern.
+    const target = Math.max(0, Math.floor(number));
+    const duration = 700;
+    const startTime = performance.now();
+
+    function animate(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(target * eased);
+
+      el.textContent = current.toLocaleString('id-ID');
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
   async function updateVisitorCount() {
+    const el = document.getElementById('visitorCount');
+    el.textContent = 'Memuat...';
+
     try {
-      const res = await fetch('/api/visitor');
+      const now = Date.now();
+      const lastVisit = Number(localStorage.getItem(VISITOR_KEY) || 0);
+
+      // Hitung pengunjung baru hanya sekali setiap 24 jam
+      // pada browser yang sama.
+      const shouldCount = !lastVisit || (now - lastVisit) >= VISITOR_INTERVAL;
+
+      let endpoint = VISITOR_API;
+
+      if (shouldCount) {
+        endpoint += '?_=' + now;
+      } else {
+        endpoint =
+          'https://api.counterapi.dev/v1/peta-data-pemilih-tebo/pengunjung/?_=' + now;
+      }
+
+      const res = await fetch(endpoint, {
+        method: 'GET',
+        cache: 'no-store'
+      });
+
+      if (!res.ok) {
+        throw new Error('CounterAPI HTTP ' + res.status);
+      }
+
       const data = await res.json();
-      document.getElementById('visitorCount').innerText =
-        Number(data.count).toLocaleString('id-ID');
-    } catch {
-      document.getElementById('visitorCount').innerText = '—';
+
+      // CounterAPI mengembalikan nilai pada properti "value".
+      // Beberapa respons lama bisa menggunakan "count", jadi
+      // keduanya diterima agar tidak muncul NaN.
+      const count = Number(
+        data?.value ??
+        data?.count ??
+        data?.data?.value ??
+        data?.data?.count
+      );
+
+      if (!Number.isFinite(count)) {
+        throw new Error('Nilai counter tidak valid');
+      }
+
+      showVisitorCount(count);
+
+      if (shouldCount) {
+        localStorage.setItem(VISITOR_KEY, String(now));
+      }
+
+    } catch (error) {
+      console.error('Gagal memuat statistik pengunjung:', error);
+
+      // Jangan pernah menampilkan NaN.
+      // Jika API sementara gagal, tampilkan angka terakhir
+      // yang pernah berhasil disimpan di browser.
+      const cached = Number(localStorage.getItem('kpu_tebo_visitor_cached') || 0);
+
+      if (Number.isFinite(cached) && cached > 0) {
+        showVisitorCount(cached);
+      } else {
+        el.textContent = '0';
+      }
     }
   }
+
+  // Simpan angka terakhir yang tampil sebagai cadangan lokal.
+  const originalShowVisitorCount = showVisitorCount;
+  showVisitorCount = function(value) {
+    const number = Number(value);
+    if (Number.isFinite(number)) {
+      localStorage.setItem('kpu_tebo_visitor_cached', String(Math.floor(number)));
+    }
+    originalShowVisitorCount(value);
+  };
 
   updateVisitorCount();
 </script>
