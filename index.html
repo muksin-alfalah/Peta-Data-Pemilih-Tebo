@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Data Pemilih KPU Kabupaten Tebo</title>
 
   <meta name="description" content="Peta Data Pemilih Kabupaten Tebo - Menyajikan informasi data pemilih per kecamatan dalam bentuk peta interaktif untuk transparansi dan kemudahan akses masyarakat.">
@@ -10,14 +11,40 @@
   <meta name="author" content="Rendatin KPU Tebo">
   <meta name="robots" content="index, follow">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- BOOTSTRAP -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- LEAFLET -->
+  <link
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+    rel="stylesheet"
+  >
+
+  <!-- AOS -->
+  <link
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    rel="stylesheet"
+  >
+
+  <!-- GOOGLE FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
+
+    /* =====================================================
+       ROOT
+    ===================================================== */
+
     :root {
       --primary: #b51d2a;
       --primary-dark: #7f101b;
@@ -30,8 +57,18 @@
       --shadow: 0 18px 50px rgba(16, 24, 40, .10);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+
+    /* =====================================================
+       GLOBAL
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -41,19 +78,34 @@
       font-weight: 400;
     }
 
+
+    /* =====================================================
+       LOADING
+    ===================================================== */
+
     #loading {
       position: fixed;
       inset: 0;
       background: #fff;
-      z-index: 9999;
+      z-index: 999999;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       gap: 12px;
+      transition: opacity .35s ease;
     }
 
-    #loading .spinner-border { width: 2.5rem; height: 2.5rem; color: var(--primary); }
+    #loading .spinner-border {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: var(--primary);
+    }
+
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
 
     .navbar {
       background: rgba(16, 24, 40, .88) !important;
@@ -86,7 +138,8 @@
       padding: 9px 12px !important;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover,
+    .nav-link.active {
       color: #fff !important;
       background: rgba(255,255,255,.10);
     }
@@ -105,7 +158,14 @@
       font-weight: 500;
     }
 
-    .dropdown-item:hover { background: #f2f4f7; }
+    .dropdown-item:hover {
+      background: #f2f4f7;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
 
     .hero {
       min-height: 92vh;
@@ -113,20 +173,31 @@
       display: flex;
       align-items: center;
       overflow: hidden;
+
       background:
-        linear-gradient(105deg, rgba(16,24,40,.92) 0%, rgba(16,24,40,.73) 20%, rgba(16,24,40,.35) 50%),
+        linear-gradient(
+          105deg,
+          rgba(16,24,40,.92) 0%,
+          rgba(16,24,40,.73) 20%,
+          rgba(16,24,40,.35) 50%
+        ),
         url('kantor_baru.jpeg') center/cover;
     }
 
     .hero::after {
       content: "";
       position: absolute;
+
       width: 560px;
       height: 560px;
+
       right: -180px;
       top: 80px;
-      background: rgba(181,29,42,.22)
+
+      background: rgba(181,29,42,.22);
+
       border-radius: 50%;
+
       filter: blur(2px);
     }
 
@@ -140,11 +211,16 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+
       background: rgba(255,255,255,.12);
       border: 1px solid rgba(255,255,255,.18);
+
       color: #fff;
+
       padding: 8px 13px;
+
       border-radius: 999px;
+
       font-size: .78rem;
       font-weight: 700;
       letter-spacing: .5px;
@@ -160,11 +236,17 @@
 
     .hero h1 {
       color: #fff;
+
       font-size: clamp(2.5rem, 6vw, 5rem);
+
       line-height: 1.03;
+
       font-weight: 800;
+
       letter-spacing: -2.5px;
+
       max-width: 850px;
+
       margin: 22px 0 18px;
     }
 
@@ -175,19 +257,29 @@
 
     .hero p {
       color: rgba(255,255,255,.78);
+
       font-size: 1.05rem;
+
       line-height: 1.75;
+
       max-width: 650px;
+
       margin-bottom: 28px;
     }
 
     .btn-main {
       background: var(--primary);
+
       color: #fff;
+
       border: 0;
+
       border-radius: 11px;
+
       padding: 13px 20px;
+
       font-weight: 700;
+
       box-shadow: 0 10px 25px rgba(181,29,42,.28);
     }
 
@@ -199,725 +291,2160 @@
 
     .btn-ghost {
       color: #fff;
+
       border: 1px solid rgba(255,255,255,.28);
+
       background: rgba(255,255,255,.08);
+
       border-radius: 11px;
+
       padding: 12px 20px;
+
       font-weight: 600;
     }
 
-    .btn-ghost:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,.15);
+      color: #fff;
+    }
+
+
+    /* =====================================================
+       STATISTIK
+    ===================================================== */
 
     .stats-wrap {
       margin-top: -58px;
+
       position: relative;
+
       z-index: 5;
     }
 
     .stats-card {
       background: rgba(255,255,255,.97);
+
       border: 1px solid rgba(234,236,240,.9);
+
       border-radius: 18px;
+
       box-shadow: var(--shadow);
+
       padding: 25px 22px;
+
       height: 100%;
+
       text-align: center;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
     }
 
     .stats-icon {
       width: 75px;
       height: 42px;
+
       display: grid;
       place-items: center;
+
       border-radius: 12px;
+
       background: #fcecee;
+
       color: var(--primary);
+
       font-weight: 800;
+
       margin-bottom: 16px;
     }
 
     .stats-label {
       color: var(--muted);
+
       font-size: .9rem;
+
       font-weight: 600;
+
       margin-bottom: 8px;
     }
 
     .stats-number {
       color: var(--navy);
+
       font-size: 1.75rem;
+
       font-weight: 800;
+
       letter-spacing: -.8px;
     }
+
+
+    /* =====================================================
+       SECTION
+    ===================================================== */
 
     .section {
       padding: 100px 0;
     }
 
-    .section-soft { background: var(--soft); }
+    .section-soft {
+      background: var(--soft);
+    }
 
     .section-kicker {
       color: var(--primary);
+
       font-size: .75rem;
+
       font-weight: 800;
+
       text-transform: uppercase;
+
       letter-spacing: 1.4px;
+
       margin-bottom: 10px;
     }
 
     .section-title {
       color: var(--navy);
+
       font-size: clamp(1.8rem, 3vw, 2.7rem);
+
       line-height: 1.15;
+
       font-weight: 800;
+
       letter-spacing: -1px;
+
       margin-bottom: 15px;
     }
 
     .section-text {
       color: var(--muted);
+
       line-height: 1.8;
+
       max-width: 720px;
     }
 
+
+    /* =====================================================
+       INFO CARD
+    ===================================================== */
+
     .info-card {
       border: 1px solid var(--border);
+
       border-radius: 20px;
+
       padding: 30px;
+
       background: #fff;
+
       height: 100%;
+
       box-shadow: 0 8px 30px rgba(16,24,40,.05);
     }
 
     .info-card p {
       color: var(--muted);
+
       line-height: 1.8;
+
       margin-bottom: 0;
     }
 
-    /* === TAMBAHAN KHUSUS PETA STATISTIK === */
+
+    /* =====================================================
+       FULL WIDTH MAP
+    ===================================================== */
+
     .map-card {
+      width: 100%;
+
       background: #fff;
-      border-radius: 22px;
-      padding: 12px;
+
+      border-radius: 24px;
+
+      padding: 14px;
+
       border: 1px solid var(--border);
+
       box-shadow: var(--shadow);
     }
 
+    .map-wrapper {
+      position: relative;
+
+      width: 100%;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      background: #dbe4e8;
+    }
+
     #map {
-      height: 480px;
-      border-radius: 16px;
+      width: 100%;
+
+      height: 680px;
+
+      border-radius: 20px;
+
       overflow: hidden;
     }
 
-    .map-caption {
-      padding: 15px 10px 5px;
-      color: var(--muted);
-      font-size: .82rem;
-    }
+
+    /* =====================================================
+       MAP OVERLAY TITLE
+    ===================================================== */
 
     .map-overlay-title {
       position: absolute;
+
       z-index: 500;
+
       top: 22px;
+
       left: 22px;
+
       background: rgba(255,255,255,.96);
+
       border-radius: 12px;
+
       padding: 11px 15px;
+
       box-shadow: 0 8px 22px rgba(16,24,40,.16);
+
       color: var(--navy);
+
       font-size: .78rem;
+
       font-weight: 800;
     }
 
+
+    /* =====================================================
+       FULLSCREEN BUTTON
+    ===================================================== */
+
+    .map-fullscreen-btn {
+      position: absolute;
+
+      z-index: 1000;
+
+      top: 22px;
+
+      right: 22px;
+
+      width: 46px;
+
+      height: 46px;
+
+      border: 0;
+
+      border-radius: 12px;
+
+      background: rgba(255,255,255,.97);
+
+      color: var(--navy);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 23px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 22px rgba(16,24,40,.18);
+
+      transition: .2s ease;
+    }
+
+    .map-fullscreen-btn:hover {
+      background: #fff;
+
+      transform: scale(1.05);
+
+      box-shadow:
+        0 10px 28px rgba(16,24,40,.25);
+    }
+
+    .map-fullscreen-btn:active {
+      transform: scale(.96);
+    }
+
+
+    /* =====================================================
+       MAP FULLSCREEN MODE
+    ===================================================== */
+
+    .map-wrapper.map-fullscreen {
+      position: fixed;
+
+      inset: 0;
+
+      width: 100vw;
+
+      height: 100vh;
+
+      z-index: 999999;
+
+      border-radius: 0;
+
+      background: #dbe4e8;
+    }
+
+    .map-wrapper.map-fullscreen #map {
+      width: 100vw;
+
+      height: 100vh;
+
+      border-radius: 0;
+    }
+
+    .map-wrapper.map-fullscreen .map-overlay-title {
+      top: 22px;
+      left: 22px;
+    }
+
+    .map-wrapper.map-fullscreen .map-fullscreen-btn {
+      top: 22px;
+      right: 22px;
+    }
+
+
+    /* =====================================================
+       MAP LEGEND
+    ===================================================== */
+
     .map-legend {
       position: absolute;
+
       z-index: 500;
+
       left: 22px;
+
       bottom: 55px;
+
       min-width: 175px;
+
       background: rgba(16,24,40,.91);
+
       color: #fff;
+
       border-radius: 12px;
+
       padding: 12px 14px;
-      box-shadow: 0 8px 22px rgba(16,24,40,.18);
+
+      box-shadow:
+        0 8px 22px rgba(16,24,40,.18);
+
       font-size: .69rem;
     }
 
     .map-legend-title {
       font-size: .74rem;
+
       font-weight: 800;
+
       margin-bottom: 8px;
     }
 
     .legend-row {
       display: flex;
+
       align-items: center;
+
       gap: 8px;
+
       margin: 5px 0;
     }
 
     .legend-dot {
       width: 12px;
+
       height: 12px;
+
       border-radius: 50%;
+
       border: 1px solid rgba(255,255,255,.7);
+
       flex: 0 0 auto;
     }
 
+
+    /* =====================================================
+       MAP HELP
+    ===================================================== */
+
     .map-help {
       position: absolute;
+
       z-index: 500;
+
       right: 22px;
+
       bottom: 55px;
+
       background: rgba(255,255,255,.95);
+
       color: var(--muted);
+
       border-radius: 10px;
+
       padding: 9px 12px;
+
       font-size: .68rem;
-      box-shadow: 0 6px 18px rgba(16,24,40,.12);
+
+      box-shadow:
+        0 6px 18px rgba(16,24,40,.12);
     }
+
+
+    /* =====================================================
+       MAP CAPTION
+    ===================================================== */
+
+    .map-caption {
+      padding: 15px 10px 5px;
+
+      color: var(--muted);
+
+      font-size: .82rem;
+
+      line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       BUBBLE LABEL
+    ===================================================== */
 
     .bubble-label {
       background: transparent !important;
+
       border: 0 !important;
+
       box-shadow: none !important;
+
       color: #fff !important;
+
       font-size: 9px;
+
       line-height: 1.15;
+
       font-weight: 800;
+
       text-align: center;
-      text-shadow: 0 1px 3px rgba(0,0,0,.9);
+
+      text-shadow:
+        0 1px 3px rgba(0,0,0,.9);
     }
+
+
+    /* =====================================================
+       POPUP
+    ===================================================== */
 
     .stat-popup {
       min-width: 205px;
+
       font-family: 'Inter', sans-serif;
     }
 
     .stat-popup .popup-kecamatan {
       color: var(--muted);
+
       font-size: 11px;
+
       font-weight: 600;
+
       text-transform: uppercase;
     }
 
     .stat-popup .popup-name {
       color: var(--navy);
+
       font-size: 15px;
+
       font-weight: 800;
+
       margin-top: 3px;
     }
 
     .stat-popup .popup-value {
       color: var(--primary);
+
       font-size: 25px;
+
       font-weight: 800;
+
       margin-top: 6px;
     }
 
     .stat-popup .popup-note {
       color: var(--muted);
+
       font-size: 9px;
+
       margin-top: 4px;
     }
 
+
+    /* =====================================================
+       FEATURE CARD
+    ===================================================== */
+
     .feature-card {
       border: 1px solid var(--border);
+
       background: #fff;
+
       border-radius: 18px;
+
       padding: 26px;
+
       height: 100%;
+
       transition: .25s ease;
     }
 
     .feature-card:hover {
       transform: translateY(-5px);
+
       box-shadow: var(--shadow);
     }
 
     .feature-icon {
       width: 46px;
+
       height: 46px;
+
       display: grid;
+
       place-items: center;
+
       border-radius: 13px;
+
       background: #fcecee;
+
       color: var(--primary);
+
       font-weight: 800;
+
       margin-bottom: 18px;
     }
 
     .feature-card h3 {
       color: var(--navy);
+
       font-size: 1.05rem;
+
       font-weight: 750;
     }
 
     .feature-card p {
       color: var(--muted);
+
       line-height: 1.7;
+
       font-size: .9rem;
+
       margin: 0;
     }
 
+
+    /* =====================================================
+       VISITOR
+    ===================================================== */
+
     .visitor {
       border-radius: 18px;
+
       background: var(--navy);
+
       color: #fff;
+
       padding: 25px;
     }
 
-    .visitor small { color: rgba(255,255,255,.65); }
+    .visitor small {
+      color: rgba(255,255,255,.65);
+    }
+
     #visitorCount {
       font-size: 1.7rem;
+
       font-weight: 800;
+
       min-width: 90px;
+
       text-align: right;
+
       letter-spacing: -.5px;
     }
 
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
     footer {
       background: #0b1220;
+
       color: rgba(255,255,255,.65);
+
       padding: 42px 0 25px;
     }
 
-    footer h5 { color: #fff; font-weight: 700; }
-    footer p { font-size: .85rem; line-height: 1.7; }
-    .footer-line { border-top: 1px solid rgba(255,255,255,.09); margin-top: 25px; padding-top: 20px; }
+    footer h5 {
+      color: #fff;
+
+      font-weight: 700;
+    }
+
+    footer p {
+      font-size: .85rem;
+
+      line-height: 1.7;
+    }
+
+    .footer-line {
+      border-top: 1px solid rgba(255,255,255,.09);
+
+      margin-top: 25px;
+
+      padding-top: 20px;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE TABLET
+    ===================================================== */
 
     @media (max-width: 991px) {
-      .hero { min-height: 85vh; }
-      .hero h1 { letter-spacing: -1.5px; }
-      .stats-wrap { margin-top: -30px; }
-      .section { padding: 75px 0; }
+
+      .hero {
+        min-height: 85vh;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .stats-wrap {
+        margin-top: -30px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      #map {
+        height: 600px;
+      }
+
     }
 
+
+    /* =====================================================
+       RESPONSIVE MOBILE
+    ===================================================== */
+
     @media (max-width: 575px) {
-      .hero-content { padding-top: 100px; }
-      .hero h1 { font-size: 2.6rem; }
-      .hero p { font-size: .95rem; }
-      .stats-wrap { margin-top: 20px; }
-      .section { padding: 65px 0; }
-      #map { height: 390px; }
-      .map-overlay-title { top: 12px; left: 12px; }
-      .map-legend { left: 12px; bottom: 50px; }
-      .map-help { display: none; }
+
+      .hero-content {
+        padding-top: 100px;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero p {
+        font-size: .95rem;
+      }
+
+      .stats-wrap {
+        margin-top: 20px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .map-card {
+        padding: 8px;
+
+        border-radius: 18px;
+      }
+
+      .map-wrapper {
+        border-radius: 15px;
+      }
+
+      #map {
+        height: 520px;
+
+        border-radius: 15px;
+      }
+
+      .map-overlay-title {
+        top: 12px;
+
+        left: 12px;
+
+        right: 65px;
+
+        font-size: .68rem;
+
+        padding: 9px 11px;
+      }
+
+      .map-fullscreen-btn {
+        top: 12px;
+
+        right: 12px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 19px;
+      }
+
+      .map-legend {
+        left: 12px;
+
+        bottom: 48px;
+
+        min-width: 165px;
+
+        padding: 10px 12px;
+
+        font-size: .64rem;
+      }
+
+      .map-help {
+        display: none;
+      }
+
+      .map-caption {
+        font-size: .72rem;
+
+        padding: 12px 5px 4px;
+      }
+
     }
-   
+
   </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
 <div id="loading">
+
   <div class="spinner-border"></div>
-  <div class="fw-semibold">Memuat Data Pemilih...</div>
-  <small class="text-secondary">Peta Data Pemilih Kabupaten Tebo</small>
+
+  <div class="fw-semibold">
+    Memuat Data Pemilih...
+  </div>
+
+  <small class="text-secondary">
+    Peta Data Pemilih Kabupaten Tebo
+  </small>
+
 </div>
 
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
   <div class="container">
-    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-      <img src="kpu logo.png" class="me-2" alt="Logo KPU">
-      <span>DATA PEMILIH <span class="d-none d-sm-inline">KPU TEBO</span></span>
+
+    <a
+      class="navbar-brand fw-bold d-flex align-items-center"
+      href="index.html"
+    >
+
+      <img
+        src="kpu logo.png"
+        class="me-2"
+        alt="Logo KPU"
+      >
+
+      <span>
+        DATA PEMILIH
+        <span class="d-none d-sm-inline">
+          KPU TEBO
+        </span>
+      </span>
+
     </a>
 
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+
       <span class="navbar-toggler-icon"></span>
+
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-lg-center">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Data Pemilih</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target="_blank" rel="noopener">Data Pemilih Tebo 2025</a></li>
-            <li><a class="dropdown-item" href="https://lookerstudio.google.com/reporting/241100f4-2089-4929-a89e-7e0efdcd3337" target="_blank" rel="noopener">Data Pemilih Tebo 2026</a></li>
-          </ul>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+    >
+
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            href="index.html"
+          >
+            Home
+          </a>
         </li>
 
-        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
-        <li class="nav-item"><a class="nav-link" href="buletin-datin.html">Buletin</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://cekdptonline.kpu.go.id" target="_blank" rel="noopener">Cek DPT Online</a></li>
-        <li class="nav-item"><a class="nav-link" href="tentang-rendatin.html">Tentang</a></li>
+
+        <li class="nav-item dropdown">
+
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            data-bs-toggle="dropdown"
+          >
+            Data Pemilih
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+
+            <li>
+              <a
+                class="dropdown-item"
+                href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5"
+                target="_blank"
+                rel="noopener"
+              >
+                Data Pemilih Tebo 2025
+              </a>
+            </li>
+
+            <li>
+              <a
+                class="dropdown-item"
+                href="https://lookerstudio.google.com/reporting/241100f4-2089-4929-a89e-7e0efdcd3337"
+                target="_blank"
+                rel="noopener"
+              >
+                Data Pemilih Tebo 2026
+              </a>
+            </li>
+
+          </ul>
+
+        </li>
+
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="galeri.html"
+          >
+            Galeri
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="buletin-datin.html"
+          >
+            Buletin
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="https://cekdptonline.kpu.go.id"
+            target="_blank"
+            rel="noopener"
+          >
+            Cek DPT Online
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="tentang-rendatin.html"
+          >
+            Tentang
+          </a>
+        </li>
+
       </ul>
+
     </div>
+
   </div>
+
 </nav>
 
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
 <header class="hero">
+
   <div class="container hero-content">
+
     <div data-aos="fade-up">
-      <div class="eyebrow"><span></span> Portal Data Pemilih Kabupaten Tebo</div>
-      <h1>Data Pemilih Valid yang <em>Terbuka </em>dan Mudah di Akses.</h1>
+
+      <div class="eyebrow">
+
+        <span></span>
+
+        Portal Data Pemilih Kabupaten Tebo
+
+      </div>
+
+
+      <h1>
+        Data Pemilih Valid yang
+        <em>Terbuka</em>
+        dan Mudah di Akses.
+      </h1>
+
     </div>
+
   </div>
+
 </header>
 
+
+<!-- =====================================================
+     STATISTIK
+===================================================== -->
+
 <section class="stats-wrap">
+
   <div class="container">
+
     <div class="row g-3">
-      <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+
+
+      <div
+        class="col-6 col-lg-3"
+        data-aos="fade-up"
+        data-aos-delay="50"
+      >
+
         <div class="stats-card">
-          <div class="stats-icon">12</div>
-          <div class="stats-number">Kecamatan</div>
+
+          <div class="stats-icon">
+            12
+          </div>
+
+          <div class="stats-number">
+            Kecamatan
+          </div>
+
         </div>
+
       </div>
-      <div class="col-6 col-lg-3" data-aos="fade-up">
+
+
+      <div
+        class="col-6 col-lg-3"
+        data-aos="fade-up"
+      >
+
         <div class="stats-card">
-          <div class="stats-icon">279.051</div>
-          <div class="stats-number">Data Pemilih</div>
+
+          <div class="stats-icon">
+            279.051
+          </div>
+
+          <div class="stats-number">
+            Data Pemilih
+          </div>
+
         </div>
+
       </div>
-      <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+
+
+      <div
+        class="col-6 col-lg-3"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+
         <div class="stats-card">
-          <div class="stats-icon">142.574</div>
-          <div class="stats-number">Pemilih Laki-Laki</div>
+
+          <div class="stats-icon">
+            142.574
+          </div>
+
+          <div class="stats-number">
+            Pemilih Laki-Laki
+          </div>
+
         </div>
+
       </div>
-      <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+
+
+      <div
+        class="col-6 col-lg-3"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+
         <div class="stats-card">
-          <div class="stats-icon">136.477</div>
-          <div class="stats-number">Pemilih Perempuan</div>
+
+          <div class="stats-icon">
+            136.477
+          </div>
+
+          <div class="stats-number">
+            Pemilih Perempuan
+          </div>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
-<section id="tentang" class="section">
-  <div class="container">
-    <div class="row g-4 align-items-stretch">
-      <div class="col-lg-5" data-aos="fade-right">
-        <div class="info-card d-flex flex-column justify-content-center">
-          <div class="section-kicker">Tentang Portal</div>
-          <h2 class="section-title">Satu pintu untuk informasi data pemilih Tebo.</h2>
-          <p class="section-text mb-4">
-            Website ini menampilkan data pemilih dalam bentuk peta interaktif
-            serta menyediakan akses menuju dashboard data pemilih Kabupaten Tebo.
-            Portal dirancang agar informasi lebih mudah dipahami dan diakses masyarakat.
-          </p>
-          <div>
-            <a href="tentang-rendatin.html" class="btn btn-main">Selengkapnya</a>
-          </div>
-        </div>
+
+<!-- =====================================================
+     PETA STATISTIK PEMILIH
+     FULL WIDTH
+===================================================== -->
+
+<section
+  id="tentang"
+  class="section"
+>
+
+  <div class="container-fluid px-3 px-lg-4">
+
+    <div
+      class="text-center mb-4"
+      data-aos="fade-up"
+    >
+
+      <div class="section-kicker">
+        Peta Data Pemilih
       </div>
 
-      <div class="col-lg-7" data-aos="fade-left">
-        <div class="map-card h-100">
-          <div class="position-relative">
-            <div class="map-overlay-title">PETA STATISTIK PEMILIH · PDPB 2026</div>
-            <div id="map"></div>
+      <h2 class="section-title">
+        Peta Statistik Pemilih Kabupaten Tebo
+      </h2>
 
-            <div class="map-legend">
-              <div class="map-legend-title">JUMLAH PEMILIH</div>
-              <div class="legend-row"><span class="legend-dot" style="background:#b51d2a"></span> &gt; 40.000</div>
-              <div class="legend-row"><span class="legend-dot" style="background:#ef7b2d"></span> 25.000 – 40.000</div>
-              <div class="legend-row"><span class="legend-dot" style="background:#e3b52c"></span> 18.000 – 25.000</div>
-              <div class="legend-row"><span class="legend-dot" style="background:#63a842"></span> 13.000 – 18.000</div>
-              <div class="legend-row"><span class="legend-dot" style="background:#248dc9"></span> &lt; 13.000</div>
-            </div>
-
-            <div class="map-help">Klik lingkaran untuk melihat statistik</div>
-          </div>
-
-          <div class="map-caption">
-            *Sumber Data Pemutakhiran Data Pemilih Berkelanjutan KPU Kabupaten Tebo Tahun 2026.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="peta" class="section section-soft">
-  <div class="container">
-    <div class="text-center mb-5" data-aos="fade-up">
-      <div class="section-kicker">Akses Informasi</div>
-      <a href="https://datastudio.google.com/u/0/reporting/241100f4-2089-4929-a89e-7e0efdcd3337/page/Rd34" class="section-title btn-jelajah" target="_blank">Jelajahi Data Pemilih</a>
       <p class="section-text mx-auto">
-        Gunakan dashboard dan layanan terkait untuk memperoleh informasi data
-        pemilih secara lebih lengkap.
+        Visualisasi jumlah pemilih pada setiap kecamatan
+        di Kabupaten Tebo berdasarkan Pemutakhiran Data
+        Pemilih Berkelanjutan (PDPB) Tahun 2026.
       </p>
+
     </div>
 
 
-    <div class="visitor mt-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3" data-aos="fade-up">
-      <div>
-        <small>STATISTIK AKSES PORTAL</small>
-        <div class="fw-bold mt-1">Jumlah Pengunjung</div>
+    <!-- =================================================
+         MAP CARD
+    ================================================== -->
+
+    <div
+      class="map-card"
+      data-aos="fade-up"
+    >
+
+      <div
+        class="map-wrapper"
+        id="mapWrapper"
+      >
+
+
+        <!-- PETA -->
+        <div id="map"></div>
+
+
+        <!-- JUDUL PETA -->
+        <div class="map-overlay-title">
+
+          PETA STATISTIK PEMILIH · PDPB 2026
+
+        </div>
+
+
+        <!-- =================================================
+             FULLSCREEN
+        ================================================== -->
+
+        <button
+          type="button"
+          class="map-fullscreen-btn"
+          id="mapFullscreenBtn"
+          title="Tampilkan peta layar penuh"
+          aria-label="Tampilkan peta layar penuh"
+        >
+
+          ⛶
+
+        </button>
+
+
+        <!-- =================================================
+             LEGENDA
+        ================================================== -->
+
+        <div class="map-legend">
+
+          <div class="map-legend-title">
+            JUMLAH PEMILIH
+          </div>
+
+
+          <div class="legend-row">
+
+            <span
+              class="legend-dot"
+              style="background:#b51d2a"
+            ></span>
+
+            &gt; 40.000
+
+          </div>
+
+
+          <div class="legend-row">
+
+            <span
+              class="legend-dot"
+              style="background:#ef7b2d"
+            ></span>
+
+            25.000 – 40.000
+
+          </div>
+
+
+          <div class="legend-row">
+
+            <span
+              class="legend-dot"
+              style="background:#e3b52c"
+            ></span>
+
+            18.000 – 25.000
+
+          </div>
+
+
+          <div class="legend-row">
+
+            <span
+              class="legend-dot"
+              style="background:#63a842"
+            ></span>
+
+            13.000 – 18.000
+
+          </div>
+
+
+          <div class="legend-row">
+
+            <span
+              class="legend-dot"
+              style="background:#248dc9"
+            ></span>
+
+            &lt; 13.000
+
+          </div>
+
+        </div>
+
+
+        <!-- PETUNJUK -->
+
+        <div class="map-help">
+
+          Klik lingkaran untuk melihat statistik
+
+        </div>
+
+
       </div>
-      <div id="visitorCount">Memuat...</div>
+
+
+      <!-- SUMBER -->
+
+      <div class="map-caption">
+
+        *Sumber Data Pemutakhiran Data Pemilih Berkelanjutan
+        KPU Kabupaten Tebo Tahun 2026.
+
+      </div>
+
     </div>
+
   </div>
+
 </section>
+
+
+<!-- =====================================================
+     AKSES INFORMASI
+===================================================== -->
+
+<section
+  id="peta"
+  class="section section-soft"
+>
+
+  <div class="container">
+
+    <div
+      class="text-center mb-5"
+      data-aos="fade-up"
+    >
+
+      <div class="section-kicker">
+        Akses Informasi
+      </div>
+
+
+      <a
+        href="https://datastudio.google.com/u/0/reporting/241100f4-2089-4929-a89e-7e0efdcd3337/page/Rd34"
+        class="section-title btn-jelajah"
+        target="_blank"
+        rel="noopener"
+      >
+
+        Jelajahi Data Pemilih
+
+      </a>
+
+
+      <p class="section-text mx-auto">
+
+        Gunakan dashboard dan layanan terkait untuk memperoleh
+        informasi data pemilih secara lebih lengkap.
+
+      </p>
+
+    </div>
+
+
+    <!-- =================================================
+         VISITOR
+    ================================================== -->
+
+    <div
+      class="visitor mt-5 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
+      data-aos="fade-up"
+    >
+
+      <div>
+
+        <small>
+          STATISTIK AKSES PORTAL
+        </small>
+
+        <div class="fw-bold mt-1">
+          Jumlah Pengunjung
+        </div>
+
+      </div>
+
+
+      <div id="visitorCount">
+        Memuat...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
+
   <div class="container">
+
     <div class="row g-4">
+
       <div class="col-lg-5">
-        <h5>Rendatin KPU Tebo</h5>
-        <p class="mb-0">Perencanaan, Data dan Informasi</p>
+
+        <h5>
+          Rendatin KPU Tebo
+        </h5>
+
+        <p class="mb-0">
+          Perencanaan, Data dan Informasi
+        </p>
+
       </div>
+
     </div>
-    <div class="footer-line d-flex flex-column flex-md-row justify-content-between gap-2">
-      <small>&copy; 2026 KPU Kabupaten Tebo</small>
+
+
+    <div
+      class="footer-line d-flex flex-column flex-md-row justify-content-between gap-2"
+    >
+
+      <small>
+        &copy; 2026 KPU Kabupaten Tebo
+      </small>
+
     </div>
+
   </div>
+
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- =====================================================
+     JAVASCRIPT LIBRARY
+===================================================== -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+></script>
+
+<script
+  src="https://unpkg.com/leaflet/dist/leaflet.js"
+></script>
+
+<script
+  src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+></script>
+
 
 <script>
-  window.addEventListener("load", () => {
+
+/* ==========================================================
+   LOADING
+========================================================== */
+
+window.addEventListener("load", () => {
+
+  setTimeout(() => {
+
+    const loading =
+      document.getElementById("loading");
+
+    loading.style.opacity = "0";
+
     setTimeout(() => {
-      document.getElementById("loading").style.opacity = "0";
-      document.getElementById("loading").style.transition = "opacity .35s ease";
-      setTimeout(() => {
-        document.getElementById("loading").style.display = "none";
-      }, 350);
-    }, 250);
-  });
 
-  AOS.init({
-    duration: 650,
-    once: true,
-    offset: 60
-  });
+      loading.style.display = "none";
 
-  /* ==========================================================
-     PETA STATISTIK PEMILIH PER KECAMATAN
-     Data jumlah pemilih mengikuti data yang diberikan pengguna.
-     Koordinat merupakan titik representatif/awal untuk bubble.
-     ========================================================== */
+    }, 350);
 
-  const kecamatanData = [
-    { nama: "Rimbo Bujang", jumlah: 50328, lat: -1.165, lng: 102.095 },
-    { nama: "Tebo Tengah", jumlah: 32186, lat: -1.450, lng: 102.445 },
-    { nama: "Rimbo Ulu", jumlah: 29529, lat: -1.265, lng: 101.945 },
-    { nama: "Tebo Ulu", jumlah: 26971, lat: -1.220, lng: 102.610 },
-    { nama: "Tebo Ilir", jumlah: 23104, lat: -1.625, lng: 102.610 },
-    { nama: "Tengah Ilir", jumlah: 22128, lat: -1.520, lng: 102.335 },
-    { nama: "Sumay", jumlah: 20413, lat: -1.845, lng: 102.310 },
-    { nama: "Rimbo Ilir", jumlah: 18297, lat: -1.490, lng: 101.900 },
-    { nama: "VII Koto Ilir", jumlah: 16949, lat: -1.720, lng: 102.020 },
-    { nama: "VII Koto", jumlah: 15922, lat: -1.365, lng: 102.180 },
-    { nama: "Muara Tabir", jumlah: 14744, lat: -1.075, lng: 102.360 },
-    { nama: "Serai Serumpun", jumlah: 8480, lat: -1.210, lng: 102.790 }
-  ];
+  }, 250);
 
-  const map = L.map('map', {
-    scrollWheelZoom: false
-  }).setView([-1.42, 102.34], 9);
+});
 
-  /* Basemap satelit seperti contoh yang kamu kirim */
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'
-  }).addTo(map);
 
-  function getColor(jumlah) {
-    if (jumlah > 40000) return '#b51d2a';
-    if (jumlah >= 25000) return '#ef7b2d';
-    if (jumlah >= 18000) return '#e3b52c';
-    if (jumlah >= 13000) return '#63a842';
-    return '#248dc9';
+/* ==========================================================
+   AOS
+========================================================== */
+
+AOS.init({
+
+  duration: 650,
+
+  once: true,
+
+  offset: 60
+
+});
+
+
+/* ==========================================================
+   DATA KECAMATAN
+========================================================== */
+
+const kecamatanData = [
+
+  {
+    nama: "Rimbo Bujang",
+    jumlah: 50328,
+    lat: -1.165,
+    lng: 102.095
+  },
+
+  {
+    nama: "Tebo Tengah",
+    jumlah: 32186,
+    lat: -1.450,
+    lng: 102.445
+  },
+
+  {
+    nama: "Rimbo Ulu",
+    jumlah: 29529,
+    lat: -1.265,
+    lng: 101.945
+  },
+
+  {
+    nama: "Tebo Ulu",
+    jumlah: 26971,
+    lat: -1.220,
+    lng: 102.610
+  },
+
+  {
+    nama: "Tebo Ilir",
+    jumlah: 23104,
+    lat: -1.625,
+    lng: 102.610
+  },
+
+  {
+    nama: "Tengah Ilir",
+    jumlah: 22128,
+    lat: -1.520,
+    lng: 102.335
+  },
+
+  {
+    nama: "Sumay",
+    jumlah: 20413,
+    lat: -1.845,
+    lng: 102.310
+  },
+
+  {
+    nama: "Rimbo Ilir",
+    jumlah: 18297,
+    lat: -1.490,
+    lng: 101.900
+  },
+
+  {
+    nama: "VII Koto Ilir",
+    jumlah: 16949,
+    lat: -1.720,
+    lng: 102.020
+  },
+
+  {
+    nama: "VII Koto",
+    jumlah: 15922,
+    lat: -1.365,
+    lng: 102.180
+  },
+
+  {
+    nama: "Muara Tabir",
+    jumlah: 14744,
+    lat: -1.075,
+    lng: 102.360
+  },
+
+  {
+    nama: "Serai Serumpun",
+    jumlah: 8480,
+    lat: -1.210,
+    lng: 102.790
   }
 
-  function getRadius(jumlah) {
-    const min = 8241;
-    const max = 49762;
-    return 12 + ((jumlah - min) / (max - min)) * 25;
+];
+
+
+/* ==========================================================
+   MAP
+========================================================== */
+
+const map = L.map("map", {
+
+  scrollWheelZoom: false
+
+}).setView(
+
+  [-1.42, 102.34],
+
+  9
+
+);
+
+
+/* ==========================================================
+   SATELLITE BASEMAP
+========================================================== */
+
+L.tileLayer(
+
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+
+  {
+
+    attribution:
+      "Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community"
+
   }
 
-  function formatNumber(number) {
-    return number.toLocaleString('id-ID');
+).addTo(map);
+
+
+/* ==========================================================
+   WARNA
+========================================================== */
+
+function getColor(jumlah) {
+
+  if (jumlah > 40000) {
+
+    return "#b51d2a";
+
   }
 
-  kecamatanData.forEach((item) => {
-    const color = getColor(item.jumlah);
-    const radius = getRadius(item.jumlah);
+  if (jumlah >= 25000) {
 
-    const marker = L.circleMarker([item.lat, item.lng], {
+    return "#ef7b2d";
+
+  }
+
+  if (jumlah >= 18000) {
+
+    return "#e3b52c";
+
+  }
+
+  if (jumlah >= 13000) {
+
+    return "#63a842";
+
+  }
+
+  return "#248dc9";
+
+}
+
+
+/* ==========================================================
+   UKURAN BUBBLE
+========================================================== */
+
+function getRadius(jumlah) {
+
+  const min = 8480;
+
+  const max = 50328;
+
+  return 12 +
+    ((jumlah - min) /
+    (max - min)) * 25;
+
+}
+
+
+/* ==========================================================
+   FORMAT ANGKA
+========================================================== */
+
+function formatNumber(number) {
+
+  return number.toLocaleString("id-ID");
+
+}
+
+
+/* ==========================================================
+   MARKER
+========================================================== */
+
+kecamatanData.forEach((item) => {
+
+  const color =
+    getColor(item.jumlah);
+
+  const radius =
+    getRadius(item.jumlah);
+
+
+  const marker = L.circleMarker(
+
+    [item.lat, item.lng],
+
+    {
+
       radius: radius,
-      color: color,
-      weight: 2,
-      opacity: 1,
-      fillColor: color,
-      fillOpacity: 0.68
-    }).addTo(map);
 
-    marker.bindTooltip(
-      `${item.nama}<br><strong>${formatNumber(item.jumlah)}</strong>`,
-      {
-        direction: 'center',
-        permanent: true,
-        className: 'bubble-label',
-        opacity: 1
-      }
+      color: color,
+
+      weight: 2,
+
+      opacity: 1,
+
+      fillColor: color,
+
+      fillOpacity: .68
+
+    }
+
+  ).addTo(map);
+
+
+  /* LABEL */
+
+  marker.bindTooltip(
+
+    `${item.nama}<br>
+     <strong>${formatNumber(item.jumlah)}</strong>`,
+
+    {
+
+      direction: "center",
+
+      permanent: true,
+
+      className: "bubble-label",
+
+      opacity: 1
+
+    }
+
+  );
+
+
+  /* POPUP */
+
+  marker.bindPopup(`
+
+    <div class="stat-popup">
+
+      <div class="popup-kecamatan">
+        Kecamatan
+      </div>
+
+      <div class="popup-name">
+        ${item.nama.toUpperCase()}
+      </div>
+
+      <div class="popup-value">
+        ${formatNumber(item.jumlah)}
+      </div>
+
+      <div class="popup-note">
+        Jumlah Pemilih · PDPB 2026
+      </div>
+
+    </div>
+
+  `);
+
+
+  /* HOVER */
+
+  marker.on("mouseover", function () {
+
+    this.setStyle({
+
+      weight: 3,
+
+      fillOpacity: .88
+
+    });
+
+  });
+
+
+  marker.on("mouseout", function () {
+
+    this.setStyle({
+
+      weight: 2,
+
+      fillOpacity: .68
+
+    });
+
+  });
+
+});
+
+
+/* ==========================================================
+   FULLSCREEN PETA
+========================================================== */
+
+const mapWrapper =
+  document.getElementById("mapWrapper");
+
+const fullscreenButton =
+  document.getElementById("mapFullscreenBtn");
+
+
+function updateFullscreenButton() {
+
+  const active =
+    mapWrapper.classList.contains("map-fullscreen");
+
+
+  if (active) {
+
+    fullscreenButton.innerHTML = "✕";
+
+    fullscreenButton.title =
+      "Keluar dari layar penuh";
+
+    fullscreenButton.setAttribute(
+      "aria-label",
+      "Keluar dari layar penuh"
     );
 
-    marker.bindPopup(`
-      <div class="stat-popup">
-        <div class="popup-kecamatan">Kecamatan</div>
-        <div class="popup-name">${item.nama.toUpperCase()}</div>
-        <div class="popup-value">${formatNumber(item.jumlah)}</div>
-        <div class="popup-note">Jumlah Pemilih · PDPB 2026</div>
-      </div>
-    `);
+  } else {
 
-    marker.on('mouseover', function () {
-      this.setStyle({
-        weight: 3,
-        fillOpacity: 0.88
-      });
-    });
+    fullscreenButton.innerHTML = "⛶";
 
-    marker.on('mouseout', function () {
-      this.setStyle({
-        weight: 2,
-        fillOpacity: 0.68
-      });
-    });
-  });
+    fullscreenButton.title =
+      "Tampilkan peta layar penuh";
 
-  /* ==========================================================
-     STATISTIK PENGUNJUNG PORTAL
-     Menggunakan CounterAPI agar jumlah tersimpan online dan
-     tetap bertambah meskipun website di-refresh atau dibuka
-     dari perangkat lain.
+    fullscreenButton.setAttribute(
+      "aria-label",
+      "Tampilkan peta layar penuh"
+    );
 
-     Catatan:
-     - Pengunjung yang sama dihitung maksimal 1 kali dalam 24 jam
-       pada browser yang sama.
-     - CounterAPI V1 bersifat publik, sehingga namespace/counter
-       jangan dipakai untuk data rahasia.
-     ========================================================== */
-
-  const VISITOR_API =
-    'https://api.counterapi.dev/v1/peta-data-pemilih-tebo/pengunjung/up';
-
-  const VISITOR_KEY = 'kpu_tebo_visitor_last_count';
-  const VISITOR_INTERVAL = 24 * 60 * 60 * 1000; // 24 jam
-
-  function showVisitorCount(value) {
-    const el = document.getElementById('visitorCount');
-    const number = Number(value);
-
-    if (!Number.isFinite(number)) {
-      el.textContent = '0';
-      return;
-    }
-
-    // Animasi angka agar terlihat lebih modern.
-    const target = Math.max(0, Math.floor(number));
-    const duration = 700;
-    const startTime = performance.now();
-
-    function animate(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(target * eased);
-
-      el.textContent = current.toLocaleString('id-ID');
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    }
-
-    requestAnimationFrame(animate);
   }
 
-  async function updateVisitorCount() {
-    const el = document.getElementById('visitorCount');
-    el.textContent = 'Memuat...';
+}
 
-    try {
-      const now = Date.now();
-      const lastVisit = Number(localStorage.getItem(VISITOR_KEY) || 0);
 
-      // Hitung pengunjung baru hanya sekali setiap 24 jam
-      // pada browser yang sama.
-      const shouldCount = !lastVisit || (now - lastVisit) >= VISITOR_INTERVAL;
+function resizeMap() {
 
-      let endpoint = VISITOR_API;
+  setTimeout(() => {
 
-      if (shouldCount) {
-        endpoint += '?_=' + now;
-      } else {
-        endpoint =
-          'https://api.counterapi.dev/v1/peta-data-pemilih-tebo/pengunjung/?_=' + now;
-      }
+    map.invalidateSize();
 
-      const res = await fetch(endpoint, {
-        method: 'GET',
-        cache: 'no-store'
-      });
+  }, 350);
 
-      if (!res.ok) {
-        throw new Error('CounterAPI HTTP ' + res.status);
-      }
+}
 
-      const data = await res.json();
 
-      // CounterAPI mengembalikan nilai pada properti "value".
-      // Beberapa respons lama bisa menggunakan "count", jadi
-      // keduanya diterima agar tidak muncul NaN.
-      const count = Number(
+fullscreenButton.addEventListener(
+  "click",
+  () => {
+
+    const active =
+      mapWrapper.classList.contains(
+        "map-fullscreen"
+      );
+
+
+    if (active) {
+
+      /* KELUAR */
+
+      mapWrapper.classList.remove(
+        "map-fullscreen"
+      );
+
+      document.body.style.overflow = "";
+
+    } else {
+
+      /* MASUK */
+
+      mapWrapper.classList.add(
+        "map-fullscreen"
+      );
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    updateFullscreenButton();
+
+    resizeMap();
+
+  }
+);
+
+
+/* ==========================================================
+   ESCAPE
+========================================================== */
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (
+
+      event.key === "Escape" &&
+
+      mapWrapper.classList.contains(
+        "map-fullscreen"
+      )
+
+    ) {
+
+      mapWrapper.classList.remove(
+        "map-fullscreen"
+      );
+
+      document.body.style.overflow = "";
+
+      updateFullscreenButton();
+
+      resizeMap();
+
+    }
+
+  }
+);
+
+
+/* ==========================================================
+   VISITOR COUNTER
+========================================================== */
+
+const VISITOR_API =
+  "https://api.counterapi.dev/v1/peta-data-pemilih-tebo/pengunjung/up";
+
+const VISITOR_KEY =
+  "kpu_tebo_visitor_last_count";
+
+const VISITOR_CACHE =
+  "kpu_tebo_visitor_cached";
+
+const VISITOR_INTERVAL =
+  24 * 60 * 60 * 1000;
+
+
+function showVisitorCount(value) {
+
+  const el =
+    document.getElementById(
+      "visitorCount"
+    );
+
+  const number =
+    Number(value);
+
+
+  if (!Number.isFinite(number)) {
+
+    el.textContent = "0";
+
+    return;
+
+  }
+
+
+  const target =
+    Math.max(
+      0,
+      Math.floor(number)
+    );
+
+
+  const duration = 700;
+
+  const start =
+    performance.now();
+
+
+  function animate(now) {
+
+    const progress =
+      Math.min(
+        (now - start) / duration,
+        1
+      );
+
+
+    const eased =
+      1 - Math.pow(
+        1 - progress,
+        3
+      );
+
+
+    const current =
+      Math.floor(
+        target * eased
+      );
+
+
+    el.textContent =
+      current.toLocaleString(
+        "id-ID"
+      );
+
+
+    if (progress < 1) {
+
+      requestAnimationFrame(
+        animate
+      );
+
+    }
+
+  }
+
+
+  localStorage.setItem(
+    VISITOR_CACHE,
+    String(target)
+  );
+
+
+  requestAnimationFrame(
+    animate
+  );
+
+}
+
+
+async function updateVisitorCount() {
+
+  const el =
+    document.getElementById(
+      "visitorCount"
+    );
+
+
+  el.textContent =
+    "Memuat...";
+
+
+  try {
+
+    const now =
+      Date.now();
+
+
+    const lastVisit =
+      Number(
+        localStorage.getItem(
+          VISITOR_KEY
+        ) || 0
+      );
+
+
+    const shouldCount =
+
+      !lastVisit ||
+
+      (
+        now - lastVisit
+        >= VISITOR_INTERVAL
+      );
+
+
+    let endpoint;
+
+
+    if (shouldCount) {
+
+      endpoint =
+        VISITOR_API +
+        "?_=" +
+        now;
+
+    } else {
+
+      endpoint =
+        "https://api.counterapi.dev/v1/" +
+        "peta-data-pemilih-tebo/" +
+        "pengunjung/?_=" +
+        now;
+
+    }
+
+
+    const response =
+      await fetch(
+
+        endpoint,
+
+        {
+
+          method: "GET",
+
+          cache: "no-store"
+
+        }
+
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "CounterAPI HTTP " +
+        response.status
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    const count =
+      Number(
+
         data?.value ??
         data?.count ??
         data?.data?.value ??
         data?.data?.count
+
       );
 
-      if (!Number.isFinite(count)) {
-        throw new Error('Nilai counter tidak valid');
-      }
 
-      showVisitorCount(count);
+    if (!Number.isFinite(count)) {
 
-      if (shouldCount) {
-        localStorage.setItem(VISITOR_KEY, String(now));
-      }
+      throw new Error(
+        "Nilai counter tidak valid"
+      );
 
-    } catch (error) {
-      console.error('Gagal memuat statistik pengunjung:', error);
-
-      // Jangan pernah menampilkan NaN.
-      // Jika API sementara gagal, tampilkan angka terakhir
-      // yang pernah berhasil disimpan di browser.
-      const cached = Number(localStorage.getItem('kpu_tebo_visitor_cached') || 0);
-
-      if (Number.isFinite(cached) && cached > 0) {
-        showVisitorCount(cached);
-      } else {
-        el.textContent = '0';
-      }
     }
+
+
+    showVisitorCount(
+      count
+    );
+
+
+    if (shouldCount) {
+
+      localStorage.setItem(
+
+        VISITOR_KEY,
+
+        String(now)
+
+      );
+
+    }
+
   }
 
-  // Simpan angka terakhir yang tampil sebagai cadangan lokal.
-  const originalShowVisitorCount = showVisitorCount;
-  showVisitorCount = function(value) {
-    const number = Number(value);
-    if (Number.isFinite(number)) {
-      localStorage.setItem('kpu_tebo_visitor_cached', String(Math.floor(number)));
-    }
-    originalShowVisitorCount(value);
-  };
+  catch (error) {
 
-  updateVisitorCount();
+    console.error(
+
+      "Gagal memuat statistik pengunjung:",
+
+      error
+
+    );
+
+
+    const cached =
+      Number(
+
+        localStorage.getItem(
+          VISITOR_CACHE
+        ) || 0
+
+      );
+
+
+    if (
+
+      Number.isFinite(cached) &&
+
+      cached > 0
+
+    ) {
+
+      showVisitorCount(
+        cached
+      );
+
+    } else {
+
+      el.textContent =
+        "0";
+
+    }
+
+  }
+
+}
+
+
+updateVisitorCount();
+
+
+/* ==========================================================
+   RESIZE MAP SAAT WINDOW BERUBAH
+========================================================== */
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    map.invalidateSize();
+
+  }
+);
+
+
+/* ==========================================================
+   INITIAL BUTTON
+========================================================== */
+
+updateFullscreenButton();
+
 </script>
+
 
 </body>
 </html>
