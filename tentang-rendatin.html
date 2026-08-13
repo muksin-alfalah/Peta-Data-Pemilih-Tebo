@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -30,9 +31,13 @@
       --shadow: 0 18px 50px rgba(16, 24, 40, .10);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -93,7 +98,12 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(110deg, rgba(16,24,40,.96) 0%, rgba(16,24,40,.84) 52%, rgba(127,16,27,.58) 100%),
+        linear-gradient(
+          110deg,
+          rgba(16,24,40,.96) 0%,
+          rgba(16,24,40,.84) 52%,
+          rgba(127,16,27,.58) 100%
+        ),
         url('kantor_baru.jpeg') center/cover;
     }
 
@@ -114,7 +124,10 @@
       position: absolute;
       inset: auto 0 0 0;
       height: 120px;
-      background: linear-gradient(transparent, rgba(16,24,40,.32));
+      background: linear-gradient(
+        transparent,
+        rgba(16,24,40,.32)
+      );
     }
 
     .hero-content {
@@ -222,6 +235,7 @@
       color: var(--primary);
       font-weight: 800;
       margin-bottom: 20px;
+      flex-shrink: 0;
     }
 
     .intro-card h3 {
@@ -237,6 +251,128 @@
       margin: 0;
     }
 
+    /* HISTORY */
+    .history-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 10px 35px rgba(16,24,40,.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .history-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--primary);
+    }
+
+    .history-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .7px;
+      margin-bottom: 14px;
+    }
+
+    .history-date span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .history-card h3 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .history-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .history-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .launch-box {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 17px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+    }
+
+    .launch-box strong {
+      color: var(--navy);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 5px;
+      bottom: 5px;
+      width: 2px;
+      background: #ead1d4;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -30px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid #fff;
+      box-shadow: 0 0 0 2px #ead1d4;
+    }
+
+    .timeline-item h4 {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.75;
+      margin: 0;
+    }
+
     /* PEOPLE */
     .person-card {
       position: relative;
@@ -247,7 +383,10 @@
       padding: 28px 22px;
       text-align: center;
       overflow: hidden;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
     }
 
     .person-card::before {
@@ -274,7 +413,11 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(
+        145deg,
+        var(--primary),
+        var(--primary-dark)
+      );
       color: #fff;
       font-size: 1.25rem;
       font-weight: 800;
@@ -305,7 +448,10 @@
       margin-top: 0;
     }
 
-    .atiul-card { margin-left: auto; margin-right: auto; }
+    .atiul-card {
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     .person-card h3 {
       color: var(--navy);
@@ -336,7 +482,11 @@
 
     /* LEADER */
     .leader-card {
-      background: linear-gradient(135deg, #101828, #202c42);
+      background: linear-gradient(
+        135deg,
+        #101828,
+        #202c42
+      );
       border-radius: 26px;
       padding: 34px;
       color: #fff;
@@ -445,8 +595,13 @@
     }
 
     @media (max-width: 991px) {
-      .hero { min-height: 68vh; }
-      .section { padding: 75px 0; }
+      .hero {
+        min-height: 68vh;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
     }
 
     @media (max-width: 575px) {
@@ -465,7 +620,8 @@
       }
 
       .intro-card,
-      .leader-card {
+      .leader-card,
+      .history-card {
         padding: 26px;
       }
     }
@@ -477,23 +633,34 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
   <div class="container">
+
     <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
       <img src="kpu logo.png" class="me-2" alt="Logo KPU">
       <span>KPU KABUPATEN TEBO</span>
     </a>
 
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Buka navigasi">
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-label="Buka navigasi">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-lg-center">
+
         <li class="nav-item">
           <a class="nav-link" href="index.html">Home</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5" target="_blank" rel="noopener">
+          <a
+            class="nav-link"
+            href="https://lookerstudio.google.com/reporting/deff956a-7fdc-49bb-9cfe-f6429fabc8a5"
+            target="_blank"
+            rel="noopener">
             Data Pemilih Tebo
           </a>
         </li>
@@ -507,16 +674,22 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" href="tentang-rendatin.html">Tentang</a>
+          <a class="nav-link active" href="tentang-rendatin.html">
+            Tentang
+          </a>
         </li>
+
       </ul>
     </div>
+
   </div>
 </nav>
+
 
 <!-- HERO -->
 <header class="hero">
   <div class="container hero-content">
+
     <div class="eyebrow">
       <span></span>
       Rendatin KPU Kabupaten Tebo
@@ -532,263 +705,726 @@
       dalam mendukung pengelolaan, penyajian, dan penyampaian informasi
       secara terstruktur, akurat, dan informatif.
     </p>
+
   </div>
 </header>
+
 
 <!-- INTRO -->
 <section class="section">
   <div class="container">
+
     <div class="section-heading">
-      <div class="section-kicker">Tentang Kami</div>
-      <h2 class="section-title">Perencanaan, Data dan Informasi</h2>
+
+      <div class="section-kicker">
+        Tentang Kami
+      </div>
+
+      <h2 class="section-title">
+        Perencanaan, Data dan Informasi
+      </h2>
+
       <p class="section-text">
-        Kami adalah Tim Rendatin (Perencanaan, Data dan Informasi) KPU Kabupaten
-        Tebo yang bertugas mengelola dan menyajikan data serta informasi pemilu
-        dengan transparan dan akurat.
+        Kami adalah Tim Rendatin (Perencanaan, Data dan Informasi)
+        KPU Kabupaten Tebo yang bertugas mengelola dan menyajikan
+        data serta informasi pemilu dengan transparan dan akurat.
       </p>
+
     </div>
 
+
     <div class="row g-4">
+
       <div class="col-lg-4">
         <div class="intro-card">
-          <div class="intro-icon">01</div>
-          <h3>Perencanaan</h3>
+
+          <div class="intro-icon">
+            01
+          </div>
+
+          <h3>
+            Perencanaan
+          </h3>
+
           <p>
             Mendukung proses perencanaan yang berkaitan dengan data,
             informasi, dan kebutuhan penyelenggaraan kegiatan KPU.
           </p>
+
         </div>
       </div>
 
+
       <div class="col-lg-4">
         <div class="intro-card">
-          <div class="intro-icon">02</div>
-          <h3>Data</h3>
+
+          <div class="intro-icon">
+            02
+          </div>
+
+          <h3>
+            Data
+          </h3>
+
           <p>
             Mengelola dan menyajikan data agar dapat digunakan secara
             terstruktur, akurat, dan mudah dipahami.
           </p>
+
         </div>
       </div>
 
+
       <div class="col-lg-4">
         <div class="intro-card">
-          <div class="intro-icon">03</div>
-          <h3>Informasi</h3>
+
+          <div class="intro-icon">
+            03
+          </div>
+
+          <h3>
+            Informasi
+          </h3>
+
           <p>
             Mendukung penyampaian informasi kepemiluan agar lebih mudah
             diakses dan dipahami oleh masyarakat.
           </p>
+
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
 
+
+<!-- SEJARAH WEBSITE -->
+<section class="section section-soft">
+
+  <div class="container">
+
+    <div class="row align-items-center g-5">
+
+      <!-- KIRI -->
+      <div class="col-lg-5">
+
+        <div class="section-kicker">
+          Sejarah Website
+        </div>
+
+        <h2 class="section-title">
+          Dari Gagasan Menjadi
+          <span style="color: var(--primary);">
+            Pusat Informasi Digital
+          </span>
+        </h2>
+
+        <p class="section-text">
+          Website Rendatin KPU Kabupaten Tebo merupakan salah satu
+          gagasan dari Tim Perencanaan, Data dan Informasi (Rendatin)
+          KPU Kabupaten Tebo dalam memanfaatkan teknologi digital
+          sebagai sarana penyajian data dan informasi kepemiluan.
+        </p>
+
+        <p class="section-text">
+          Kehadiran website ini menjadi bagian dari upaya untuk
+          menghadirkan informasi yang lebih terstruktur, informatif,
+          mudah diakses, dan mendukung keterbukaan informasi kepada
+          masyarakat.
+        </p>
+
+      </div>
+
+
+      <!-- KANAN -->
+      <div class="col-lg-7">
+
+        <div class="history-card">
+
+          <div class="history-date">
+            <span></span>
+            AWAL GAGASAN
+          </div>
+
+          <h3>
+            Gagasan Tim Rendatin KPU Kabupaten Tebo
+          </h3>
+
+          <p>
+            Website Rendatin KPU Kabupaten Tebo lahir dari gagasan
+            Tim Perencanaan, Data dan Informasi (Rendatin) KPU
+            Kabupaten Tebo untuk membangun sebuah media digital
+            yang dapat menjadi wadah penyajian data, informasi,
+            publikasi, dan dokumentasi kegiatan.
+          </p>
+
+          <p>
+            Gagasan tersebut dikembangkan dengan semangat untuk
+            memanfaatkan teknologi informasi dalam mendukung
+            penyelenggaraan kepemiluan serta memberikan kemudahan
+            bagi masyarakat dalam memperoleh informasi yang
+            berkaitan dengan data dan informasi KPU Kabupaten Tebo.
+          </p>
+
+
+          <div class="launch-box">
+
+            <div class="history-date mb-2">
+              <span></span>
+              2 OKTOBER 2025
+            </div>
+
+            <p>
+              Website Rendatin KPU Kabupaten Tebo secara resmi
+              <strong>diluncurkan pada 2 Oktober 2025</strong>
+              oleh <strong>Anggota KPU Provinsi Jambi, Edison </strong> pada Rapat Pleno Terbuka PDPB Triwulan III Tahun 2025.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PERJALANAN WEBSITE -->
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="section-kicker">
+        Perjalanan Website
+      </div>
+
+      <h2 class="section-title">
+        Berkembang Bersama Kebutuhan Informasi
+      </h2>
+
+      <p class="section-text">
+        Website Rendatin terus diarahkan untuk menjadi media digital
+        yang mendukung penyajian data dan informasi KPU Kabupaten Tebo.
+      </p>
+
+    </div>
+
+
+    <div class="row justify-content-center">
+
+      <div class="col-lg-9">
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <h4>
+              Gagasan dan Pengembangan
+            </h4>
+
+            <p>
+              Tim Rendatin KPU Kabupaten Tebo menggagas pengembangan
+              media digital sebagai sarana penyajian data dan
+              informasi yang lebih terstruktur dan mudah diakses.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <h4>
+              2 Oktober 2025 — Peluncuran
+            </h4>
+
+            <p>
+              Website Rendatin KPU Kabupaten Tebo resmi diluncurkan
+              oleh Anggota KPU Provinsi Jambi, Edison.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <h4>
+              Pengembangan Berkelanjutan
+            </h4>
+
+            <p>
+              Website dikembangkan secara berkelanjutan dengan
+              menghadirkan berbagai informasi, data pemilih,
+              publikasi kegiatan, buletin data dan informasi,
+              serta dokumentasi kegiatan.
+            </p>
+
+          </div>
+
+
+          <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <h4>
+              Menuju Pusat Informasi Digital
+            </h4>
+
+            <p>
+              Website diharapkan terus berkembang menjadi salah satu
+              media informasi digital yang mendukung keterbukaan
+              informasi dan pelayanan informasi kepemiluan kepada
+              masyarakat Kabupaten Tebo.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
 <!-- PENGARAH UTAMA -->
 <section class="section section-soft">
+
   <div class="container">
+
     <div class="section-heading">
-      <div class="section-kicker">Struktur Pengarah</div>
-      <h2 class="section-title">KPU Kabupaten Tebo</h2>
+
+      <div class="section-kicker">
+        Struktur Pengarah
+      </div>
+
+      <h2 class="section-title">
+        KPU Kabupaten Tebo
+      </h2>
+
       <p class="section-text">
         Susunan pengarah terdiri dari Ketua, Anggota KPU Kabupaten Tebo,
         serta Penanggung Jawab dari Sekretariat.
       </p>
+
     </div>
 
-   <!-- Anggota & Ketua -->
-<div class="row g-4 justify-content-center">
 
-  <div class="col-6 col-md-4 col-lg">
-    <div class="person-card">
-      <div class="person-photo">
-            <img src="jun.jpeg" alt="Junaidi">
-          </div>
-      <h3>Ahmad Junaidi</h3>
-      <p class="person-role">Divisi Perencanaan, Data dan Informasi</p>
-      <span class="role-badge">Anggota</span>
-    </div>
-  </div>
+    <!-- Anggota & Ketua -->
+    <div class="row g-4 justify-content-center">
 
-  <div class="col-6 col-md-4 col-lg">
-    <div class="person-card">
-      <div class="person-photo">
-            <img src="elan.png" alt="ELan">
-          </div>
-      <h3>Elan Reinwardt Amerlon</h3>
-      <p class="person-role">Divisi Hukum dan Pengawasan</p>
-      <span class="role-badge">Anggota</span>
-    </div>
-  </div>
 
-  <div class="col-6 col-md-4 col-lg">
-    <div class="person-card">
-      <div class="person-photo">
+ <div class="col-6 col-md-4 col-lg">
+
+        <div class="person-card">
+
+          <div class="person-photo">
             <img src="ketua.png" alt="Atiul">
           </div>
-      <h3>Atiul Fuadiyah</h3>
-      <p class="person-role">Divisi Keuangan, Umum dan Logistik</p>
-      <span class="role-badge">Ketua</span>
-    </div>
-  </div>
 
-  <div class="col-6 col-md-4 col-lg">
-    <div class="person-card">
-      <div class="person-photo">
+          <h3>
+            Atiul Fuadiyah
+          </h3>
+
+          <p class="person-role">
+            Divisi Keuangan, Umum dan Logistik
+          </p>
+
+          <span class="role-badge">
+            Ketua
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="col-6 col-md-4 col-lg">
+
+        <div class="person-card">
+
+          <div class="person-photo">
+            <img src="jun.jpeg" alt="Junaidi">
+          </div>
+
+          <h3>
+            Ahmad Junaidi
+          </h3>
+
+          <p class="person-role">
+            Divisi Perencanaan, Data dan Informasi
+          </p>
+
+          <span class="role-badge">
+            Anggota
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-6 col-md-4 col-lg">
+
+        <div class="person-card">
+
+          <div class="person-photo">
+            <img src="elan.png" alt="ELan">
+          </div>
+
+          <h3>
+            Elan Reinwardt Amerlon
+          </h3>
+
+          <p class="person-role">
+            Divisi Hukum dan Pengawasan
+          </p>
+
+          <span class="role-badge">
+            Anggota
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="col-6 col-md-4 col-lg">
+
+        <div class="person-card">
+
+          <div class="person-photo">
             <img src="heri.png" alt="Heri">
           </div>
-      <h3>Heri Satriawan</h3>
-      <p class="person-role">Divisi Teknis Penyelenggara </p>
-      <span class="role-badge">Anggota</span>
-    </div>
-  </div>
 
-  <div class="col-6 col-md-4 col-lg">
-    <div class="person-card">
-      <div class="person-photo">
+          <h3>
+            Heri Satriawan
+          </h3>
+
+          <p class="person-role">
+            Divisi Teknis Penyelenggara
+          </p>
+
+          <span class="role-badge">
+            Anggota
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="col-6 col-md-4 col-lg">
+
+        <div class="person-card">
+
+          <div class="person-photo">
             <img src="sup.png" alt="Sup">
           </div>
-      <h3>Supriadi</h3>
-      <p class="person-role">Divisi Sumber Daya Manusia dan Partisipasi Masyarakat</p>
-      <span class="role-badge">Anggota</span>
+
+          <h3>
+            Supriadi
+          </h3>
+
+          <p class="person-role">
+            Divisi Sumber Daya Manusia dan Partisipasi Masyarakat
+          </p>
+
+          <span class="role-badge">
+            Anggota
+          </span>
+
+        </div>
+
+      </div>
+
     </div>
-  </div>
 
-</div>
 
-<!-- Sekretaris -->
-<div class="row justify-content-center mt-4">
-  <div class="col-6 col-md-4 col-lg-3">
-    <div class="person-card">
-      <div class="person-photo">
+    <!-- Sekretaris -->
+    <div class="row justify-content-center mt-4">
+
+      <div class="col-6 col-md-4 col-lg-3">
+
+        <div class="person-card">
+
+          <div class="person-photo">
             <img src="nukman.png" alt="Nukman">
           </div>
-      <h3>Nukman</h3>
-      <p class="person-role">Sekretaris KPU Kabupaten Tebo</p>
-      <span class="role-badge">Sekretaris</span>
+
+          <h3>
+            Nukman
+          </h3>
+
+          <p class="person-role">
+            Sekretaris KPU Kabupaten Tebo
+          </p>
+
+          <span class="role-badge">
+            Sekretaris
+          </span>
+
+        </div>
+
+      </div>
+
     </div>
+
   </div>
-</div>
+
+</section>
+
 
 <!-- TIM RENDATIN -->
 <section class="section">
+
   <div class="container">
+
     <div class="section-heading">
-      <div class="section-kicker">Tim Rendatin</div>
-      <h2 class="section-title">Perencanaan, Data dan Informasi</h2>
+
+      <div class="section-kicker">
+        Tim Sekretariat
+      </div>
+
+      <h2 class="section-title">
+        Perencanaan, Data dan Informasi
+      </h2>
+
       <p class="section-text">
-        Struktur Tim Rendatin KPU Kabupaten Tebo dalam mendukung pengelolaan
-        data dan informasi.
+        Struktur Sekretariat Rendatin KPU Kabupaten Tebo dalam mendukung
+        pengelolaan data dan informasi.
       </p>
+
     </div>
+
 
     <!-- Ketua & Kasubbag -->
     <div class="row g-4 justify-content-center mb-4">
+
       <div class="col-6 col-md-4 col-lg-3">
+
         <div class="person-card">
+
           <div class="person-photo">
             <img src="robi.png" alt="Robiah">
           </div>
-          <h3>Robiah</h3>
-          <p class="person-role">Kasubbag Rendatin</p>
-          <span class="role-badge">Kasubbag</span>
+
+          <h3>
+            Robiah
+          </h3>
+
+          <p class="person-role">
+            Kasubbag Rendatin
+          </p>
+
+          <span class="role-badge">
+            Kasubbag
+          </span>
+
         </div>
+
       </div>
+
     </div>
+
 
     <!-- Staff -->
     <div class="row g-4 justify-content-center">
+
+
       <div class="col-6 col-md-4 col-lg-3">
+
         <div class="person-card">
+
           <div class="person-photo">
             <img src="meli.png" alt="Meli Yunita">
           </div>
-          <h3>Meli Yunita</h3>
-          <p class="person-role">Staff Rendatin</p>
-          <span class="role-badge">Staff</span>
+
+          <h3>
+            Meli Yunita
+          </h3>
+
+          <p class="person-role">
+            Staff Rendatin
+          </p>
+
+          <span class="role-badge">
+            Staff
+          </span>
+
         </div>
+
       </div>
 
+
       <div class="col-6 col-md-4 col-lg-3">
+
         <div class="person-card">
+
           <div class="person-photo">
             <img src="eko-purwadi.png" alt="Eko Purwadi">
           </div>
-          <h3>Eko Purwadi</h3>
-          <p class="person-role">Staff Rendatin</p>
-          <span class="role-badge">Staff</span>
+
+          <h3>
+            Eko Purwadi
+          </h3>
+
+          <p class="person-role">
+            Staff Rendatin
+          </p>
+
+          <span class="role-badge">
+            Staff
+          </span>
+
         </div>
+
       </div>
 
+
       <div class="col-6 col-md-4 col-lg-3">
+
         <div class="person-card">
+
           <div class="person-photo">
             <img src="muksin-alfalah.png" alt="Muksin Alfalah">
           </div>
-          <h3>Muksin Alfalah</h3>
-          <p class="person-role">Staff Rendatin</p>
-          <span class="role-badge">Staff</span>
+
+          <h3>
+            Muksin Alfalah
+          </h3>
+
+          <p class="person-role">
+            Staff Rendatin
+          </p>
+
+          <span class="role-badge">
+            Staff
+          </span>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
+
 
 <!-- FOOTER -->
 <footer>
+
   <div class="container">
+
     <div class="row g-4">
+
       <div class="col-lg-7">
-        <h5>Rendatin KPU Kabupaten Tebo</h5>
+
+        <h5>
+          Rendatin KPU Kabupaten Tebo
+        </h5>
+
         <p>
           Perencanaan, Data dan Informasi KPU Kabupaten Tebo.
           Portal ini dikembangkan untuk mendukung penyajian informasi
           yang lebih mudah, transparan, dan informatif.
         </p>
+
       </div>
 
+
       <div class="col-lg-5">
-        <h5>KPU Kabupaten Tebo</h5>
+
+        <h5>
+          KPU Kabupaten Tebo
+        </h5>
+
         <p>
           Informasi data dan kegiatan kepemiluan Kabupaten Tebo.
         </p>
+
       </div>
+
     </div>
+
 
     <div class="footer-line d-flex flex-column flex-md-row justify-content-between gap-2">
-      <small>&copy; 2026 Rendatin KPU Kabupaten Tebo</small>
-      <small>Perencanaan, Data dan Informasi</small>
+
+      <small>
+        &copy; 2026 Rendatin KPU Kabupaten Tebo
+      </small>
+
+      <small>
+        Perencanaan, Data dan Informasi
+      </small>
+
     </div>
+
   </div>
+
 </footer>
 
+
 <!-- BACK TO TOP -->
-<button id="backTop" aria-label="Kembali ke atas">↑</button>
+<button
+  id="backTop"
+  aria-label="Kembali ke atas">
+  ↑
+</button>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+
   const nav = document.getElementById('mainNav');
   const backTop = document.getElementById('backTop');
 
+
   window.addEventListener('scroll', () => {
+
     if (window.scrollY > 40) {
+
       nav.classList.add('scrolled');
       backTop.classList.add('show');
+
     } else {
+
       nav.classList.remove('scrolled');
       backTop.classList.remove('show');
+
     }
+
   });
 
+
   backTop.addEventListener('click', () => {
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
+
   });
+
 </script>
 
 </body>
 </html>
+```
